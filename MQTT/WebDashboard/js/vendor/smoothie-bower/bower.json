@@ -1,0 +1,8 @@
+{
+  "name": "smoothie-bower",
+  "version": "1.19.0",
+  "main": "smoothie.js",
+  "ignore": [
+    "builder"
+  ]
+}

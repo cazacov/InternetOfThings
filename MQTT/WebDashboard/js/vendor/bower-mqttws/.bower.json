@@ -1,0 +1,23 @@
+{
+  "name": "bower-mqttws",
+  "homepage": "http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/tree/src/mqttws31.js",
+  "authors": [
+    "2lemetry <m2mIO-gister@m2m.io>"
+  ],
+  "description": "Bower package for Paho Mqtt Javascript library",
+  "main": "mqttws31.js",
+  "keywords": [
+    "mqtt"
+  ],
+  "license": "MIT",
+  "_release": "f918909734",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f918909734543554860e9f4296e8b49075258048"
+  },
+  "_source": "git://github.com/m2mIO/bower-mqttws.git",
+  "_target": "*",
+  "_originalSource": "bower-mqttws",
+  "_direct": true
+}

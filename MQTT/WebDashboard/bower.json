@@ -1,0 +1,11 @@
+{
+  "name": "MQTT-WebDashboard",
+  "version": "0.0.1",
+  "dependencies": {
+    "modernizr": "~2.8.2",
+    "jquery": "~2.1.1",
+    "bower-mqttws": "*",
+    "raphael": "2.1.2"
+  },
+  "private": true
+}

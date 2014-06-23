@@ -1,0 +1,19 @@
+{
+  "name": "smoothie-bower",
+  "version": "1.19.0",
+  "main": "smoothie.js",
+  "ignore": [
+    "builder"
+  ],
+  "homepage": "https://github.com/remasis/smoothie-bower",
+  "_release": "1.19.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.19.0",
+    "commit": "d081dca210fb7e0d3ee0d1f43747d12f21670624"
+  },
+  "_source": "git://github.com/remasis/smoothie-bower.git",
+  "_target": "~1.19.0",
+  "_originalSource": "smoothie-bower",
+  "_direct": true
+}

@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.2 r9819"
-   sodipodi:docname="Новый документ 1">
+   sodipodi:docname="DevBoard_Template.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -55,7 +55,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -227,7 +227,7 @@
        sodipodi:cy="710.43304"
        sodipodi:rx="5.3149605"
        sodipodi:ry="5.3149605"
-       d="m 113.38583,710.43304 a 5.3149605,5.3149605 0 1 1 -10.62992,0 5.3149605,5.3149605 0 1 1 10.62992,0 z"
+       d="m 113.38583,710.43304 c 0,2.93538 -2.37959,5.31496 -5.31496,5.31496 -2.93537,0 -5.31496,-2.37958 -5.31496,-5.31496 0,-2.93537 2.37959,-5.31496 5.31496,-5.31496 2.93537,0 5.31496,2.37959 5.31496,5.31496 z"
        transform="translate(65.398275,207.75802)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -247,7 +247,7 @@
        sodipodi:cy="710.43304"
        sodipodi:rx="5.3149605"
        sodipodi:ry="5.3149605"
-       d="m 113.38583,710.43304 a 5.3149605,5.3149605 0 1 1 -10.62992,0 5.3149605,5.3149605 0 1 1 10.62992,0 z"
+       d="m 113.38583,710.43304 c 0,2.93538 -2.37959,5.31496 -5.31496,5.31496 -2.93537,0 -5.31496,-2.37958 -5.31496,-5.31496 0,-2.93537 2.37959,-5.31496 5.31496,-5.31496 2.93537,0 5.31496,2.37959 5.31496,5.31496 z"
        transform="translate(250.69216,190.00827)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -267,7 +267,7 @@
        sodipodi:cy="710.43304"
        sodipodi:rx="5.3149605"
        sodipodi:ry="5.3149605"
-       d="m 113.38583,710.43304 a 5.3149605,5.3149605 0 1 1 -10.62992,0 5.3149605,5.3149605 0 1 1 10.62992,0 z"
+       d="m 113.38583,710.43304 c 0,2.93538 -2.37959,5.31496 -5.31496,5.31496 -2.93537,0 -5.31496,-2.37958 -5.31496,-5.31496 0,-2.93537 2.37959,-5.31496 5.31496,-5.31496 2.93537,0 5.31496,2.37959 5.31496,5.31496 z"
        transform="translate(251.0493,94.651124)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -287,7 +287,7 @@
        sodipodi:cy="710.43304"
        sodipodi:rx="5.3149605"
        sodipodi:ry="5.3149605"
-       d="m 113.38583,710.43304 a 5.3149605,5.3149605 0 1 1 -10.62992,0 5.3149605,5.3149605 0 1 1 10.62992,0 z"
+       d="m 113.38583,710.43304 c 0,2.93538 -2.37959,5.31496 -5.31496,5.31496 -2.93537,0 -5.31496,-2.37958 -5.31496,-5.31496 0,-2.93537 2.37959,-5.31496 5.31496,-5.31496 2.93537,0 5.31496,2.37959 5.31496,5.31496 z"
        transform="translate(69.620719,37.865404)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -309,7 +309,8 @@
          sodipodi:role="line"
          id="tspan3913"
          x="167.33443"
-         y="598.04199">Breadboard</tspan></text>
+         y="598.04199"
+         style="-inkscape-font-specification:AA Zuehlke;font-family:AA Zuehlke;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Breadboard</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -320,7 +321,8 @@
          sodipodi:role="line"
          id="tspan3928"
          x="237.33443"
-         y="851.61346">Arduino</tspan></text>
+         y="851.61346"
+         style="-inkscape-font-specification:AA Zuehlke;font-family:AA Zuehlke;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Arduino</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -331,11 +333,13 @@
          sodipodi:role="line"
          id="tspan3932"
          x="683.91357"
-         y="695.11841">Raspberry</tspan><tspan
+         y="695.11841"
+         style="-inkscape-font-specification:AA Zuehlke;font-family:AA Zuehlke;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Raspberry</tspan><tspan
          sodipodi:role="line"
          x="683.91357"
          y="745.11841"
-         id="tspan3934">Pi</tspan></text>
+         id="tspan3934"
+         style="-inkscape-font-specification:AA Zuehlke;font-family:AA Zuehlke;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Pi</tspan></text>
     <path
        sodipodi:type="arc"
        style="fill:#ffffff;stroke:#1a1a1a"
@@ -344,7 +348,7 @@
        sodipodi:cy="710.43304"
        sodipodi:rx="5.3149605"
        sodipodi:ry="5.3149605"
-       d="m 113.38583,710.43304 a 5.3149605,5.3149605 0 1 1 -10.62992,0 5.3149605,5.3149605 0 1 1 10.62992,0 z"
+       d="m 113.38583,710.43304 c 0,2.93538 -2.37959,5.31496 -5.31496,5.31496 -2.93537,0 -5.31496,-2.37958 -5.31496,-5.31496 0,-2.93537 2.37959,-5.31496 5.31496,-5.31496 2.93537,0 5.31496,2.37959 5.31496,5.31496 z"
        transform="translate(611.40644,72.865404)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -364,7 +368,7 @@
        sodipodi:cy="710.43304"
        sodipodi:rx="5.3149605"
        sodipodi:ry="5.3149605"
-       d="m 113.38583,710.43304 a 5.3149605,5.3149605 0 1 1 -10.62992,0 5.3149605,5.3149605 0 1 1 10.62992,0 z"
+       d="m 113.38583,710.43304 c 0,2.93538 -2.37959,5.31496 -5.31496,5.31496 -2.93537,0 -5.31496,-2.37958 -5.31496,-5.31496 0,-2.93537 2.37959,-5.31496 5.31496,-5.31496 2.93537,0 5.31496,2.37959 5.31496,5.31496 z"
        transform="translate(519.62073,-118.20602)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
