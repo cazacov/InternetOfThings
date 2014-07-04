@@ -16,6 +16,9 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+#Viusual Micro
+Visual Micro/
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
