@@ -15,27 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="TestATSHA204.ino" />
+    <None Include="ExampleATSHA204.ino" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Visual Micro\.TestATSHA204.vsarduino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sha204_lib_return_codes.h">
+    <ClInclude Include="Visual Micro\.ExampleATSHA204.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sha204_library.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CapacitiveSensorDue.h">
+    <ClInclude Include="sha204_lib_return_codes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sha204_library.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CapacitiveSensorDue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

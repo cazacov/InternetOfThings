@@ -324,22 +324,22 @@ private:
 	uint8_t sha204p_send_command(uint8_t count, uint8_t * command);
 	uint8_t sha204p_sleep();
 	uint8_t sha204p_resync(uint8_t size, uint8_t *response);
-	
+
 
 public:
 	atsha204Class(uint8_t pin);	// Constructor
 	uint8_t sha204c_wakeup(uint8_t *response);
 	uint8_t sha204c_send_and_receive(uint8_t *tx_buffer, uint8_t rx_size, uint8_t *rx_buffer, uint8_t execution_delay, uint8_t execution_timeout);
-	uint8_t sha204c_resync(uint8_t size, uint8_t *response);	
+	uint8_t sha204c_resync(uint8_t size, uint8_t *response);
 	uint8_t sha204m_random(uint8_t * tx_buffer, uint8_t * rx_buffer, uint8_t mode);
 	uint8_t sha204m_dev_rev(uint8_t *tx_buffer, uint8_t *rx_buffer);
 	uint8_t sha204m_read(uint8_t *tx_buffer, uint8_t *rx_buffer, uint8_t zone, uint16_t address);
 	uint8_t sha204m_execute(uint8_t op_code, uint8_t param1, uint16_t param2,
-			uint8_t datalen1, uint8_t *data1, uint8_t datalen2, uint8_t *data2, uint8_t datalen3, uint8_t *data3,
-			uint8_t tx_size, uint8_t *tx_buffer, uint8_t rx_size, uint8_t *rx_buffer);
+		uint8_t datalen1, uint8_t *data1, uint8_t datalen2, uint8_t *data2, uint8_t datalen3, uint8_t *data3,
+		uint8_t tx_size, uint8_t *tx_buffer, uint8_t rx_size, uint8_t *rx_buffer);
 	uint8_t sha204m_check_parameters(uint8_t op_code, uint8_t param1, uint16_t param2,
-			uint8_t datalen1, uint8_t *data1, uint8_t datalen2, uint8_t *data2, uint8_t datalen3, uint8_t *data3,
-			uint8_t tx_size, uint8_t *tx_buffer, uint8_t rx_size, uint8_t *rx_buffer);
+		uint8_t datalen1, uint8_t *data1, uint8_t datalen2, uint8_t *data2, uint8_t datalen3, uint8_t *data3,
+		uint8_t tx_size, uint8_t *tx_buffer, uint8_t rx_size, uint8_t *rx_buffer);
 
 	uint8_t getSerialNumber(uint8_t *response);
 	void testPort();
