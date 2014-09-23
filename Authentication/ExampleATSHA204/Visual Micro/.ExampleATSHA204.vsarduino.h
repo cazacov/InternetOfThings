@@ -55,11 +55,11 @@ byte wakeupExample();
 byte serialNumberExample();
 byte macChallengeExample();
 
-#include "C:\programme\Arduino\hardware\arduino\sam\cores\arduino\arduino.h"
-#include "C:\programme\Arduino\hardware\arduino\sam\variants\arduino_due_x\pins_arduino.h" 
-#include "C:\programme\Arduino\hardware\arduino\sam\variants\arduino_due_x\variant.h" 
-#include "E:\Git\InternetOfThings\Authentication\ExampleATSHA204\ExampleATSHA204.ino"
-#include "E:\Git\InternetOfThings\Authentication\ExampleATSHA204\sha204_lib_return_codes.h"
-#include "E:\Git\InternetOfThings\Authentication\ExampleATSHA204\sha204_library.cpp"
-#include "E:\Git\InternetOfThings\Authentication\ExampleATSHA204\sha204_library.h"
+#include "c:\programme\arduino\hardware\arduino\sam\cores\arduino\arduino.h"
+#include "c:\programme\arduino\hardware\arduino\sam\variants\arduino_due_x\pins_arduino.h" 
+#include "c:\programme\arduino\hardware\arduino\sam\variants\arduino_due_x\variant.h" 
+#include "C:\Git\Cazacov\InternetOfThings\Authentication\ExampleATSHA204\ExampleATSHA204.ino"
+#include "C:\Git\Cazacov\InternetOfThings\Authentication\ExampleATSHA204\sha204_lib_return_codes.h"
+#include "C:\Git\Cazacov\InternetOfThings\Authentication\ExampleATSHA204\sha204_library.cpp"
+#include "C:\Git\Cazacov\InternetOfThings\Authentication\ExampleATSHA204\sha204_library.h"
 #endif
