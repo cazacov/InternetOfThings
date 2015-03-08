@@ -14,6 +14,8 @@ In this example we'll attach SDA to pin 7.
 The ATSHA204 can be powered between 3.3V and 5V.
 */
 
+// IMPORTANT!!!! Change buffer size in Wire.h from 32 to at least 40 !!!
+
 #include <Wire.h>
 #include "sha204_library.h"
 
@@ -33,13 +35,6 @@ void setup()
 	Serial.println("Hello world!");
 	sha204 = new atsha204Class(sha204Pin);
 
-	/*
-	Serial.println();
-	Serial.println("Sending a MAC Challenge. Response should be:");
-	Serial.println("23 6 67 0 4F 28 4D 6E 98 62 4 F4 60 A3 E8 75 8A 59 85 A6 79 96 C4 8A 88 46 43 4E B3 DB 58 A4 FB E5 73");
-	Serial.println("Response is:");
-	macChallengeExample();
-	*/
 }
 
 void loop()
@@ -50,7 +45,14 @@ void loop()
 	Serial.println("1 23 x x x x x x x EE");
 	Serial.println("Response is:");
 	serialNumberExample();
+	Serial.println("Done");
+	delay(500);
 
+	Serial.println();
+	Serial.println("Sending a MAC Challenge. Response should be:");
+	Serial.println("23 6 67 0 4F 28 4D 6E 98 62 4 F4 60 A3 E8 75 8A 59 85 A6 79 96 C4 8A 88 46 43 4E B3 DB 58 A4 FB E5 73");
+	Serial.println("Response is:");
+	macChallengeExample();
 
 	while (1)
 	{
@@ -97,7 +99,7 @@ byte serialNumberExample()
 	return returnValue;
 }
 
-/*
+
 byte macChallengeExample()
 {
 	uint8_t command[MAC_COUNT_LONG];
@@ -123,6 +125,6 @@ byte macChallengeExample()
 
 	return ret_code;
 }
-*/
+
 
 

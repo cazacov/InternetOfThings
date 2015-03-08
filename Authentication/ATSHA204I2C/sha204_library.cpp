@@ -245,6 +245,14 @@ uint8_t atsha204Class::sha204p_send_command(uint8_t count, uint8_t * command)
 
 	Wire.beginTransmission(SHA204_I2C_ADDRESS);
 	sentCount = Wire.write(0x03);
+
+	/*while (count > 30)
+	{
+		sentCount += Wire.write(command, 30);
+		command += 30;
+		count -= 30;
+		delay(3);
+	}*/
 	sentCount += Wire.write(command, count);
 	Wire.endTransmission();
 
@@ -330,12 +338,14 @@ uint8_t atsha204Class::sha204c_send_and_receive(uint8_t *tx_buffer, uint8_t rx_s
 	n_retries_send = SHA204_RETRY_COUNT + 1;
 
 	long sendDurationMicros = (count + 3) * 9L * 10;
-	sendDurationMicros = Max(sendDurationMicros, execution_delay * 1000);
+	sendDurationMicros = Max(sendDurationMicros, execution_delay * 1000L);
 
 	while ((n_retries_send-- > 0) && (ret_code != SHA204_SUCCESS))
 	{
 		// Send command.
+		digitalWrite(2, LOW);
 		ret_code = sha204p_send_command(count, tx_buffer);
+		digitalWrite(2, HIGH);
 
 		/*
 		if (ret_code != SHA204_SUCCESS)
@@ -651,6 +661,13 @@ uint8_t atsha204Class::sha204m_execute(uint8_t op_code, uint8_t param1, uint16_t
 	}
 
 	sha204c_calculate_crc(len - SHA204_CRC_SIZE, tx_buffer, p_buffer);
+
+	/*
+	Serial.print("delay:"); Serial.println(poll_delay);
+	Serial.print("timeout:"); Serial.println(poll_timeout);
+	Serial.print("size:"); Serial.println(response_size);
+	Serial.print("length:"); Serial.println(len);
+	*/
 
 	// Send command and receive response.
 	return sha204c_send_and_receive(&tx_buffer[0], response_size,
