@@ -45,8 +45,8 @@
       <file leaf-file-name="lcd.py" pinned="false" current-in-tab="true">
         <entry file="file:$PROJECT_DIR$/../../../../../..//$PROJECT_DIR$/lcd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="920">
-              <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.47934783" vertical-offset="0" max-vertical-offset="920">
+              <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding>
                 <element signature="e#19#35#0" expanded="true" />
               </folding>
@@ -266,15 +266,15 @@
       <workItem from="1425815016830" duration="649000" />
       <workItem from="1425820949527" duration="664000" />
       <workItem from="1425824326664" duration="217000" />
-      <workItem from="1425829742939" duration="1304000" />
+      <workItem from="1425829742939" duration="1969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2834000" />
+    <option name="totallyTimeSpent" value="3499000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -460,8 +460,8 @@
     </entry>
     <entry file="file:$PROJECT_DIR$/../../../../../..//$PROJECT_DIR$/lcd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="920">
-          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.47934783" vertical-offset="0" max-vertical-offset="920">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding>
             <element signature="e#19#35#0" expanded="true" />
           </folding>
