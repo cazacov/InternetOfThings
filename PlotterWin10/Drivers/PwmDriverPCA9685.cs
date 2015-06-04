@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.I2c;
-using Windows.UI.Xaml;
 
-namespace MotorHat
+namespace Drivers
 {
-    public class PwmDriver
+    public class PwmDriverPCA9685
     {
-        private ILogger logger;
-        private I2cDevice I2CAccel;
+        private readonly ILogger logger;
+        private I2cDevice pca9685;
 
         // Registers/etc.
         private const byte MODE1 = 0x00;
@@ -36,12 +32,12 @@ namespace MotorHat
         private const byte ALL_LED_OFF_L = 0xFC;
         private const byte ALL_LED_OFF_H = 0xFD;
 
-        private int[] pwmChannelFrom;
-        private int[] pwmChannelTo;
+        private readonly int[] pwmChannelFrom;
+        private readonly int[] pwmChannelTo;
         private readonly int address;
         private readonly int frequency;
 
-        public PwmDriver(ILogger logger, int address, int frequency)
+        public PwmDriverPCA9685(ILogger logger, int address, int frequency)
         {
             this.logger = logger;
             this.address = address;
@@ -53,7 +49,7 @@ namespace MotorHat
 
         public async Task Init()
         {
-            string aqs = I2cDevice.GetDeviceSelector();                     /* Get a selector string that will return all I2C controllers on the system */
+            var aqs = I2cDevice.GetDeviceSelector();                     /* Get a selector string that will return all I2C controllers on the system */
             var dis = await DeviceInformation.FindAllAsync(aqs);            /* Find the I2C bus controller device with our selector string           */
             if (dis.Count == 0)
             {
@@ -61,10 +57,12 @@ namespace MotorHat
                 return;
             }
 
-            var settings = new I2cConnectionSettings(address);
-            settings.BusSpeed = I2cBusSpeed.FastMode;
-            I2CAccel = await I2cDevice.FromIdAsync(dis[0].Id, settings);    /* Create an I2cDevice with our selected bus controller and I2C settings */
-            if (I2CAccel == null)
+            var settings = new I2cConnectionSettings(address)
+            {
+                BusSpeed = I2cBusSpeed.FastMode
+            };
+            pca9685 = await I2cDevice.FromIdAsync(dis[0].Id, settings);    /* Create an I2cDevice with our selected bus controller and I2C settings */
+            if (pca9685 == null)
             {
                 logger.WriteLn(string.Format(
                     "Slave address {0} on I2C Controller {1} is currently in use by " +
@@ -74,25 +72,25 @@ namespace MotorHat
                 return;
             }
 
-            SetAllPWM(0, 0);
-            i2cwrite8(MODE2, OUTDRV);
-            i2cwrite8(MODE1, ALLCALL);
+            SetAllPwm(0, 0);
+            I2Cwrite8(MODE2, OUTDRV);
+            I2Cwrite8(MODE1, ALLCALL);
             await Task.Delay(5);
 
-            var mode1 = i2creadU8(MODE1);
+            var mode1 = I2CreadU8(MODE1);
             mode1 = (byte)(mode1 & ~SLEEP);       //  # wake up (reset sleep)
-            i2cwrite8(MODE1, mode1);
+            I2Cwrite8(MODE1, mode1);
             await Task.Delay(5);
-            await setPWMFreq(frequency);
+            await SetPwmFreq(frequency);
             logger.WriteLn("Driver initialized");
         }
 
-        public void SetAllPWM(int on, int off)
+        public void SetAllPwm(int on, int off)
         {
-            i2cwrite8(ALL_LED_ON_L, (byte)(on & 0xFF));
-            i2cwrite8(ALL_LED_ON_H, (byte)(on >> 8));
-            i2cwrite8(ALL_LED_OFF_L, (byte)(off & 0xFF));
-            i2cwrite8(ALL_LED_OFF_H, (byte)(off >> 8));
+            I2Cwrite8(ALL_LED_ON_L, (byte)(on & 0xFF));
+            I2Cwrite8(ALL_LED_ON_H, (byte)(on >> 8));
+            I2Cwrite8(ALL_LED_OFF_L, (byte)(off & 0xFF));
+            I2Cwrite8(ALL_LED_OFF_H, (byte)(off >> 8));
 
             for (var i = 0; i< 16; i++)
             {
@@ -101,21 +99,21 @@ namespace MotorHat
             }
         }
 
-        private byte i2creadU8(byte register)
+        private byte I2CreadU8(byte register)
         {
-            byte[] regAddrBuf = new byte[] { register }; /* Register address we want to read from                                         */
-            byte[] readBuf = new byte[1];
-            I2CAccel.WriteRead(regAddrBuf, readBuf);
+            var regAddrBuf = new byte[] { register }; /* Register address we want to read from                                         */
+            var readBuf = new byte[1];
+            pca9685.WriteRead(regAddrBuf, readBuf);
             return readBuf[0];
         }
 
-        private void i2cwrite8(int register, int value)
+        private void I2Cwrite8(int register, int value)
         {
-            byte[] buf = new byte[] { (byte)register, (byte)value };
-            I2CAccel.Write(buf);
+            var buf = new byte[] { (byte)register, (byte)value };
+            pca9685.Write(buf);
         }
 
-        public async Task setPWMFreq(int freq) {
+        public async Task SetPwmFreq(int freq) {
             var prescaleval = 25000000.0;   //25MHz
             prescaleval /= 4096.0;           //12-bit
             prescaleval /= freq;
@@ -126,48 +124,44 @@ namespace MotorHat
             var prescale = (int)Math.Floor(prescaleval + 0.5);
             //logger.WriteLn(String.Format("Final pre-scale: {0}", prescale));
 
-            var oldmode = i2creadU8(MODE1);
+            var oldmode = I2CreadU8(MODE1);
             var newmode = (oldmode & 0x7F) | 0x10;             // sleep
-            i2cwrite8(MODE1, newmode);                         // go to sleep
-            i2cwrite8(PRESCALE, prescale);
-            i2cwrite8(MODE1, oldmode);
+            I2Cwrite8(MODE1, newmode);                         // go to sleep
+            I2Cwrite8(PRESCALE, prescale);
+            I2Cwrite8(MODE1, oldmode);
             await Task.Delay(5);
-            i2cwrite8(MODE1, oldmode | 0x80);
+            I2Cwrite8(MODE1, oldmode | 0x80);
         }
 
-        public void SetPWM(int channel, int on, int off)
+        public void SetPwm(int channel, int on, int off)
         {
             if (pwmChannelFrom[channel] != on)
             {
                 pwmChannelFrom[channel] = on;
-                i2cwrite8(LED0_ON_L + 4 * channel, on & 0xFF);
-                i2cwrite8(LED0_ON_H + 4 * channel, on >> 8);
+                I2Cwrite8(LED0_ON_L + 4 * channel, on & 0xFF);
+                I2Cwrite8(LED0_ON_H + 4 * channel, on >> 8);
             }
 
             if (pwmChannelTo[channel] != off)
             {
                 pwmChannelTo[channel] = off;
-                i2cwrite8(LED0_OFF_L + 4 * channel, off & 0xFF);
-                i2cwrite8(LED0_OFF_H + 4 * channel, off >> 8);
+                I2Cwrite8(LED0_OFF_L + 4 * channel, off & 0xFF);
+                I2Cwrite8(LED0_OFF_H + 4 * channel, off >> 8);
             }
         }
 
-        public void SetPin(int pin, int value)
+        public void SetPin(int pin, bool value)
         {
     		if (pin < 0 || pin > 15)
             {
                 throw new ArgumentOutOfRangeException("PWM pin must be between 0 and 15 inclusive");
             }
-            if (value != 0 && value != 1)
-            {
-                throw new ArgumentOutOfRangeException("Pin value must be 0 or 1");
+            if (!value) {
+                this.SetPwm(pin, 0, 4096);
             }
-            if (value == 0) {
-                this.SetPWM(pin, 0, 4096);
-            }
-            if (value == 1)
+            if (value)
             {
-                this.SetPWM(pin, 4096, 0);
+                this.SetPwm(pin, 4096, 0);
             }
         }
     }

@@ -4,20 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Gpio;
+using Drivers;
 using MotorHat;
 
 namespace DvdPlotter
 {
     public class Plotter
     {
-        private PwmDriver motorDriver;
+        private PwmDriverPCA9685 motorDriver;
         private ILogger logger;
         private StepperMotor motorX;
         private StepperMotor motorY;
         private readonly Servo servo;
         private int x;
         private int y;
-        private readonly PwmDriver servoDriver;
+        private readonly PwmDriverPCA9685 servoDriver;
 
         public int X { get { return x; } }
         public int Y { get { return y; } }
@@ -26,8 +27,8 @@ namespace DvdPlotter
         {
             this.logger = logger;
 
-            this.motorDriver = new PwmDriver(logger, 0x60, 1600);
-            this.servoDriver = new PwmDriver(logger, 0x41, 50);
+            this.motorDriver = new PwmDriverPCA9685(logger, 0x60, 1600);
+            this.servoDriver = new PwmDriverPCA9685(logger, 0x41, 50);
             this.motorX = new StepperMotor(logger, motorDriver, 1, 40);
             this.motorY = new StepperMotor(logger, motorDriver, 2, 40);
 
@@ -95,7 +96,7 @@ namespace DvdPlotter
 
         internal void Stop()
         {
-            motorDriver.SetAllPWM(0, 0);
+            motorDriver.SetAllPwm(0, 0);
         }
 
         public void GoTo(int newX, int newY)

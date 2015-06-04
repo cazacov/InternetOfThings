@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MotorHat;
 
-namespace MotorHat
+namespace Drivers
 {
     public class StepperMotor
     {
@@ -14,7 +10,7 @@ namespace MotorHat
         private readonly int ain2;
         private readonly int bin1;
         private readonly int bin2;
-        private readonly PwmDriver driver;
+        private readonly PwmDriverPCA9685 driver;
         private readonly int pwmA;
         private readonly int pwmB;
         private readonly int revsteps;
@@ -22,17 +18,16 @@ namespace MotorHat
         private int steppingCounter;
         private int currentstep;
         private readonly ILogger logger;
-        private Stopwatch stopwatch;
-        private readonly ulong ticksPerMs;
+        private readonly SyncDelay syncDelay;
 
-        public StepperMotor(ILogger logger, PwmDriver driver, int motorNr, int steps)
+        public StepperMotor(ILogger logger, PwmDriverPCA9685 driver, int motorNr, int steps)
         {
             this.logger = logger;
             this.driver = driver;
             this.revsteps = steps;
             this.currentstep = 0;
-            stopwatch = new Stopwatch();
-            this.ticksPerMs = (ulong)(Stopwatch.Frequency) / 1000;
+            this.syncDelay = new SyncDelay();
+            syncDelay.Calibrate();
 
             switch (motorNr)
             {
@@ -137,19 +132,19 @@ namespace MotorHat
             currentstep += MICROSTEPS * 4;
             currentstep %= MICROSTEPS * 4;
 
-            this.driver.SetPWM(pwmA, 4096, 0);
-            this.driver.SetPWM(pwmB, 4096, 0);
+            this.driver.SetPwm(pwmA, 4096, 0);
+            this.driver.SetPwm(pwmB, 4096, 0);
 
             //set up coil energizing!
-            int[][] step2coils = {
-                new int[]{ 1, 0, 0, 0 },
-                new int[]{ 1, 1, 0, 0 },
-                new int[]{0, 1, 0, 0 },
-                new int[]{0, 1, 1, 0 },
-                new int[]{0, 0, 1, 0 },
-                new int[]{0, 0, 1, 1 },
-                new int[]{ 0, 0, 0, 1 },
-                new int[]{ 1, 0, 0, 1 }
+            bool[][] step2coils = {
+                new bool[]{true,    false,  false,  false },
+                new bool[]{true,    true,   false,  false },
+                new bool[]{false,   true,   false,  false },
+                new bool[]{false,   true,   true,   false },
+                new bool[]{false,   false,  true,   false },
+                new bool[]{false,   false,  true,   true },
+                new bool[]{ false,  false,  false,  true },
+                new bool[]{ true,   false,  false,  true }
             };
 
             var coils = step2coils[currentstep / (MICROSTEPS / 2)];
@@ -178,14 +173,7 @@ namespace MotorHat
             for (var s = 0; s < steps; s++)
             {
                 this.OneStep(direction, stepstyle);
-                stopwatch.Restart();
-                while (stopwatch.ElapsedTicks < (long)ticksPerMs * 5)
-                {
-                    ; // Wait
-                }
-                stopwatch.Stop();
-                //Task.Delay(2).Wait();
-                //await Task.Delay(s_per_s);
+                syncDelay.Sleep(5);
             }
         }
     }
