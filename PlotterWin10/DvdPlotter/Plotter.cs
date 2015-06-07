@@ -19,6 +19,7 @@ namespace DvdPlotter
         private int x;
         private int y;
         private readonly PwmDriverPCA9685 servoDriver;
+        private readonly SyncDelay syncDelay = new SyncDelay();
 
         public int X { get { return x; } }
         public int Y { get { return y; } }
@@ -26,6 +27,7 @@ namespace DvdPlotter
         public Plotter(ILogger logger)
         {
             this.logger = logger;
+            syncDelay.Calibrate();
 
             this.motorDriver = new PwmDriverPCA9685(logger, 0x60, 1600);
             this.servoDriver = new PwmDriverPCA9685(logger, 0x41, 50);
@@ -99,7 +101,7 @@ namespace DvdPlotter
             motorDriver.SetAllPwm(0, 0);
         }
 
-        public void GoTo(int newX, int newY)
+        public void GoToXY(int newX, int newY)
         {
             if (newX > x)
             {
@@ -119,6 +121,50 @@ namespace DvdPlotter
             {
                 motorY.Step(y - newY, Direction.Backward, StepStyle.Interleave);
             }
+            y = newY;
+        }
+
+        public void GoToDiagonal(int newX, int newY)
+        {
+            if (newX == X || newY == Y)
+            {
+                GoToXY(newX, newY);
+            }
+
+            var deltaX = Math.Abs(newX - X);
+            var deltaY = Math.Abs(newY - Y);
+
+            bool incX = newX > X;
+            bool incY = newY > Y;
+
+            var posX = motorX.CurrentStep;
+            var posY = motorY.CurrentStep;
+
+            if (deltaX >= deltaY)
+            {
+                var xyRatio = (float) deltaY/deltaX;
+                for (var i = 0; i < deltaX*4; i++)
+                {
+                    motorX.MicrostepCoils(posX);
+                    motorY.MicrostepCoils(posY + i * (incY ? xyRatio : -xyRatio));
+                    posX += incX ? 1 : -1;
+                    syncDelay.Sleep(1);
+                }
+            }
+            else
+            {
+                var xyRatio = (float)deltaX / deltaY;
+                for (var i = 0; i < deltaY * 4; i++)
+                {
+                    motorX.MicrostepCoils(posX + i * (incX ? xyRatio : -xyRatio));
+                    motorY.MicrostepCoils(posY);
+                    posY += incY ? 1 : -1;
+                    syncDelay.Sleep(1);
+                }
+            }
+            motorX.CurrentStep = newX;
+            motorY.CurrentStep = newY;
+            x = newX;
             y = newY;
         }
     }

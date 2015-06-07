@@ -176,5 +176,26 @@ namespace Drivers
                 syncDelay.Sleep(5);
             }
         }
+
+        public void MicrostepCoils(double position)
+        {
+            var angle = position*Math.PI/(MICROSTEPS*2.0);
+            var powerAC = (int) (Math.Cos(angle) * 4095);
+            var powerBD = (int) (Math.Sin(angle) * 4095);
+
+            this.driver.SetPwm(pwmA, 0, Math.Abs(powerAC));
+            this.driver.SetPwm(pwmB, 0, Math.Abs(powerBD));
+
+            driver.SetPin(ain2, powerAC > 0);
+            driver.SetPin(ain1, powerAC < 0);
+            driver.SetPin(bin1, powerBD > 0);
+            driver.SetPin(bin2, powerBD < 0);
+        }
+
+        public int CurrentStep
+        {
+            get { return this.currentstep; }
+            set { this.currentstep = value; }
+        }
     }
 }

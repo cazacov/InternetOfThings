@@ -45,7 +45,7 @@ namespace DvdPlotter
             plotter.Stop();
 
             var painter = new Painter(plotter);
-            await painter.Hilbert();
+            await painter.Sun();
         }
     }
 }

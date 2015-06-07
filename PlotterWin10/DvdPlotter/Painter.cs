@@ -21,12 +21,43 @@ namespace DvdPlotter
             
             for (var x = 0; x < 140; x+= 10)
             {
-                plotter.GoTo(x, x);
+                plotter.GoToXY(x, x);
                 await this.plotter.PenDown();
-                plotter.GoTo(300 - x, x);
-                plotter.GoTo(300 - x, 300 - x);
-                plotter.GoTo(x, 300 - x);
-                plotter.GoTo(x, x);
+                plotter.GoToXY(300 - x, x);
+                plotter.GoToXY(300 - x, 300 - x);
+                plotter.GoToXY(x, 300 - x);
+                plotter.GoToXY(x, x);
+                await this.plotter.PenUp();
+            }
+            this.plotter.Stop();
+        }
+
+        public async Task Diagonal()
+        {
+            await this.plotter.PenUp();
+
+            plotter.GoToXY(50, 50);
+            await this.plotter.PenDown();
+            plotter.GoToXY(250, 50);
+            plotter.GoToXY(250, 250);
+            plotter.GoToXY(50, 250);
+            plotter.GoToXY(50, 50);
+            await this.plotter.PenUp();
+
+            plotter.GoToDiagonal(250, 250);
+
+            await this.plotter.PenUp();
+            this.plotter.Stop();
+        }
+
+        public async Task Sun()
+        {
+            await this.plotter.PenUp();
+            for (var phi = 0.0; phi < 2*Math.PI; phi += Math.PI/6)
+            {
+                plotter.GoToXY(150, 150);
+                await this.plotter.PenDown();
+                plotter.GoToDiagonal((int)(150 + 150.0 * Math.Cos(phi)), (int)(150 + 150.0 * Math.Sin(phi)));
                 await this.plotter.PenUp();
             }
             this.plotter.Stop();
@@ -34,10 +65,10 @@ namespace DvdPlotter
 
         public async Task Hilbert()
         {
-            const int order = 5;
+            const int order = 6;
 
             await this.plotter.PenUp();
-            this.plotter.GoTo(0, 0);
+            this.plotter.GoToXY(0, 0);
             await this.plotter.PenDown();
 
 
@@ -53,11 +84,11 @@ namespace DvdPlotter
                 return;
             }
             HilbertRight(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X, plotter.Y + lineLength);
+            this.plotter.GoToXY(plotter.X, plotter.Y + lineLength);
             HilbertUp(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X + lineLength, plotter.Y);
+            this.plotter.GoToXY(plotter.X + lineLength, plotter.Y);
             HilbertUp(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X, plotter.Y - lineLength);
+            this.plotter.GoToXY(plotter.X, plotter.Y - lineLength);
             HilbertLeft(order - 1, lineLength);
         }
 
@@ -68,11 +99,11 @@ namespace DvdPlotter
                 return;
             }
             HilbertDown(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X - lineLength, plotter.Y);
+            this.plotter.GoToXY(plotter.X - lineLength, plotter.Y);
             HilbertLeft(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X, plotter.Y - lineLength);
+            this.plotter.GoToXY(plotter.X, plotter.Y - lineLength);
             HilbertLeft(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X + lineLength, plotter.Y);
+            this.plotter.GoToXY(plotter.X + lineLength, plotter.Y);
             HilbertUp(order - 1, lineLength);
         }
 
@@ -83,11 +114,11 @@ namespace DvdPlotter
                 return;
             }
             HilbertLeft(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X, plotter.Y - lineLength);
+            this.plotter.GoToXY(plotter.X, plotter.Y - lineLength);
             HilbertDown(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X - lineLength, plotter.Y);
+            this.plotter.GoToXY(plotter.X - lineLength, plotter.Y);
             HilbertDown(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X, plotter.Y + lineLength);
+            this.plotter.GoToXY(plotter.X, plotter.Y + lineLength);
             HilbertRight(order - 1, lineLength);
         }
 
@@ -98,11 +129,11 @@ namespace DvdPlotter
                 return;
             }
             HilbertUp(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X + lineLength, plotter.Y);
+            this.plotter.GoToXY(plotter.X + lineLength, plotter.Y);
             HilbertRight(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X, plotter.Y + lineLength);
+            this.plotter.GoToXY(plotter.X, plotter.Y + lineLength);
             HilbertRight(order - 1, lineLength);
-            this.plotter.GoTo(plotter.X - lineLength, plotter.Y);
+            this.plotter.GoToXY(plotter.X - lineLength, plotter.Y);
             HilbertDown(order - 1, lineLength);
         }
 
