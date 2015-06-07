@@ -156,7 +156,7 @@ namespace DvdPlotter
             if (deltaX >= deltaY)
             {
                 var xyRatio = (float) deltaY/deltaX;
-                for (var i = 0; i < deltaX*4; i++)
+                for (var i = 1; i <= deltaX*4; i++)
                 {
                     motorX.MicrostepCoils(posX);
                     motorY.MicrostepCoils(posY + i * (incY ? xyRatio : -xyRatio));
@@ -167,7 +167,7 @@ namespace DvdPlotter
             else
             {
                 var xyRatio = (float)deltaX / deltaY;
-                for (var i = 0; i < deltaY * 4; i++)
+                for (var i = 0; i < deltaY * StepperMotor.MICROSTEPS_PER_INTERLEAVE_STEP; i++)
                 {
                     motorX.MicrostepCoils(posX + i * (incX ? xyRatio : -xyRatio));
                     motorY.MicrostepCoils(posY);
@@ -175,8 +175,8 @@ namespace DvdPlotter
                     syncDelay.Sleep(1);
                 }
             }
-            motorX.CurrentStep = newX;
-            motorY.CurrentStep = newY;
+            motorX.CurrentStep = newX * StepperMotor.MICROSTEPS_PER_INTERLEAVE_STEP;
+            motorY.CurrentStep = newY * StepperMotor.MICROSTEPS_PER_INTERLEAVE_STEP;
             x = newX;
             y = newY;
         }

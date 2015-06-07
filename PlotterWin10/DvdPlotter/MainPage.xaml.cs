@@ -47,12 +47,12 @@ namespace DvdPlotter
 
             /*
             var painter = new Painter(plotter);
-            await painter.Squares();
+            await painter.Test();
             return;
             */
-
-            var txt = new TextPainter(plotter, new FontEn(), 20, 40, 5);
-            await txt.DrawText("HELLO WORLD!", 5, 5);
+            
+            var txt = new TextPainter(plotter, new FontEnRu(), 20, 40, 6);
+            await txt.DrawText("ХАБРАХАБР", 10, 5);
         }
     }
 }

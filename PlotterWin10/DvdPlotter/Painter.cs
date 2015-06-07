@@ -137,5 +137,28 @@ namespace DvdPlotter
             HilbertDown(order - 1, lineLength);
         }
 
+        public async Task Test()
+        {
+            plotter.GoToXY(0, 0);
+            await this.plotter.PenDown();
+            plotter.GoToXY(310, 0);
+            plotter.GoToXY(310, 310);
+            plotter.GoToXY(0, 310);
+            plotter.GoToXY(0, 0);
+            await this.plotter.PenUp();
+            plotter.GoToXY(0, 100);
+            await this.plotter.PenDown();
+            plotter.GoToXY(300, 100);
+            await this.plotter.PenUp();
+
+            for (int i = 0; i < 3; i++)
+            {
+                plotter.GoToXY(i*100, 100);
+                await this.plotter.PenDown();
+                plotter.GoToDiagonal((i+1) * 100, 200);
+                await this.plotter.PenUp();
+            }
+            this.plotter.Stop();
+        }
     }
 }

@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Fonts\FontEn.cs" />
     <Compile Include="Fonts\FontRu.cs" />
+    <Compile Include="Fonts\FontEnRu.cs" />
     <Compile Include="Fonts\IFont.cs" />
     <Compile Include="Fonts\LineInstruction.cs" />
     <Compile Include="Fonts\PlotChar.cs" />
