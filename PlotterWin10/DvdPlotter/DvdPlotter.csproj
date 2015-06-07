@@ -95,6 +95,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fonts\FontEn.cs" />
+    <Compile Include="Fonts\FontRu.cs" />
+    <Compile Include="Fonts\IFont.cs" />
+    <Compile Include="Fonts\LineInstruction.cs" />
+    <Compile Include="Fonts\PlotChar.cs" />
+    <Compile Include="Fonts\TextPainter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

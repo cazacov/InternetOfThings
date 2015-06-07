@@ -23,9 +23,9 @@ namespace DvdPlotter
             {
                 plotter.GoToXY(x, x);
                 await this.plotter.PenDown();
-                plotter.GoToXY(300 - x, x);
-                plotter.GoToXY(300 - x, 300 - x);
-                plotter.GoToXY(x, 300 - x);
+                plotter.GoToXY(310 - x, x);
+                plotter.GoToXY(310 - x, 310 - x);
+                plotter.GoToXY(x, 310 - x);
                 plotter.GoToXY(x, x);
                 await this.plotter.PenUp();
             }

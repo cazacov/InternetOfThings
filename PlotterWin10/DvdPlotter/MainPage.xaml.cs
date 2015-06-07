@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Drivers;
+using DvdPlotter.Fonts;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -44,8 +45,14 @@ namespace DvdPlotter
             await plotter.Calibrate();
             plotter.Stop();
 
+            /*
             var painter = new Painter(plotter);
-            await painter.Sun();
+            await painter.Squares();
+            return;
+            */
+
+            var txt = new TextPainter(plotter, new FontEn(), 20, 40, 5);
+            await txt.DrawText("HELLO WORLD!", 5, 5);
         }
     }
 }

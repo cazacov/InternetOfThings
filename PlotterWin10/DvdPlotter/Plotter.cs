@@ -20,9 +20,11 @@ namespace DvdPlotter
         private int y;
         private readonly PwmDriverPCA9685 servoDriver;
         private readonly SyncDelay syncDelay = new SyncDelay();
+        private bool isPenUp;
 
-        public int X { get { return x; } }
-        public int Y { get { return y; } }
+        public int X => 310 - y;
+
+        public int Y => x;
 
         public Plotter(ILogger logger)
         {
@@ -49,22 +51,29 @@ namespace DvdPlotter
 
         public async Task PenUp()
         {
+            if (isPenUp)
+            {
+                return;
+            }
             servo.SetAngle(120);
             await Task.Delay(300);
+            isPenUp = true;
         }
 
         public async Task PenDown()
         {
+            if (!isPenUp)
+            {
+                return;
+            }
             servo.SetAngle(0);
             await Task.Delay(500);
+            isPenUp = false;
         }
 
         public async Task Calibrate()
         {
             var gpio = GpioController.GetDefault();
-            GpioPin switchX;
-            GpioPin switchY;
-
             // Show an error if there is no GPIO controller
             if (gpio == null)
             {
@@ -72,8 +81,8 @@ namespace DvdPlotter
                 return;
             }
 
-            switchX = gpio.OpenPin(5);
-            switchY = gpio.OpenPin(6);
+            var switchX = gpio.OpenPin(5);
+            var switchY = gpio.OpenPin(6);
             switchX.SetDriveMode(GpioPinDriveMode.Input);
             switchY.SetDriveMode(GpioPinDriveMode.Input);
 
@@ -103,6 +112,8 @@ namespace DvdPlotter
 
         public void GoToXY(int newX, int newY)
         {
+            TransformCoordinates(ref newX, ref newY);
+
             if (newX > x)
             {
                 motorX.Step(newX - x, Direction.Forward, StepStyle.Interleave);
@@ -131,11 +142,13 @@ namespace DvdPlotter
                 GoToXY(newX, newY);
             }
 
-            var deltaX = Math.Abs(newX - X);
-            var deltaY = Math.Abs(newY - Y);
+            TransformCoordinates(ref newX, ref newY);
 
-            bool incX = newX > X;
-            bool incY = newY > Y;
+            var deltaX = Math.Abs(newX - x);
+            var deltaY = Math.Abs(newY - y);
+
+            bool incX = newX > x;
+            bool incY = newY > y;
 
             var posX = motorX.CurrentStep;
             var posY = motorY.CurrentStep;
@@ -166,6 +179,13 @@ namespace DvdPlotter
             motorY.CurrentStep = newY;
             x = newX;
             y = newY;
+        }
+
+        private void TransformCoordinates(ref int newX, ref int newY)
+        {
+            var t = newX;
+            newX = newY;
+            newY = 310 - t;
         }
     }
 }
