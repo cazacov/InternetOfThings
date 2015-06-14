@@ -66,7 +66,7 @@ namespace DvdPlotter
             {
                 return;
             }
-            servo.SetAngle(0);
+            servo.SetAngle(30);
             await Task.Delay(500);
             isPenUp = false;
         }

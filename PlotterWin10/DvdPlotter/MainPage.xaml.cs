@@ -25,6 +25,9 @@ namespace DvdPlotter
     /// </summary>
     public partial class MainPage : Page, ILogger
     {
+        private Plotter plotter;
+        private Painter painter;
+        private bool isCalibrated = false;
 
         public MainPage()
         {
@@ -39,20 +42,35 @@ namespace DvdPlotter
 
         private async void InitAll()
         {
-            var plotter = new Plotter(this);
+            this.plotter = new Plotter(this);
             await plotter.Init();
-            plotter.PenUp();
+            await plotter.PenUp();
+            this.painter = new Painter(plotter);
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isCalibrated)
+            {
+                await plotter.Calibrate();
+                plotter.Stop();
+            }
+
+            if (sender == btnSquares)
+            {
+                await painter.Hilbert();
+            }
+            else if (sender == btnHilbert)
+            {
+                await painter.Hilbert();
+            }
+            return;
+        }
+
+        private async void btnCalibrate_Click(object sender, RoutedEventArgs e)
+        {
             await plotter.Calibrate();
             plotter.Stop();
-
-            /*
-            var painter = new Painter(plotter);
-            await painter.Test();
-            return;
-            */
-            
-            var txt = new TextPainter(plotter, new FontEnRu(), 20, 40, 6);
-            await txt.DrawText("ХАБРАХАБР", 10, 5);
         }
     }
 }
