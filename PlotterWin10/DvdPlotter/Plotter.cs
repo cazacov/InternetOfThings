@@ -21,6 +21,8 @@ namespace DvdPlotter
         private readonly PwmDriverPCA9685 servoDriver;
         private readonly SyncDelay syncDelay = new SyncDelay();
         private bool isPenUp;
+        private GpioPin switchX;
+        private GpioPin switchY;
 
         public int X => 310 - y;
 
@@ -41,12 +43,28 @@ namespace DvdPlotter
 
         public async Task Init()
         {
+            var gpio = GpioController.GetDefault();
+            // Show an error if there is no GPIO controller
+            if (gpio == null)
+            {
+                logger.WriteLn("There is no GPIO controller on this device.");
+                return;
+            }
+
+            this.switchX = gpio.OpenPin(5);
+            this.switchY = gpio.OpenPin(6);
+            switchX.SetDriveMode(GpioPinDriveMode.Input);
+            switchY.SetDriveMode(GpioPinDriveMode.Input);
+            logger.WriteLn("GPIO initialized", LogType.Success);
+
             await servoDriver.Init();
+            logger.WriteLn("Pen driver initialized", LogType.Success);
             await PenUp();
 
             await motorDriver.Init();
             motorX.SetSpeed(200);
             motorY.SetSpeed(200);
+            logger.WriteLn("Plotter initialized", LogType.Success);
         } 
 
         public async Task PenUp()
@@ -58,6 +76,7 @@ namespace DvdPlotter
             servo.SetAngle(120);
             await Task.Delay(300);
             isPenUp = true;
+            //logger.WriteLn("Pen up", LogType.Info);
         }
 
         public async Task PenDown()
@@ -69,22 +88,12 @@ namespace DvdPlotter
             servo.SetAngle(30);
             await Task.Delay(500);
             isPenUp = false;
+            //logger.WriteLn("Pen down", LogType.Info);
         }
 
         public async Task Calibrate()
         {
-            var gpio = GpioController.GetDefault();
-            // Show an error if there is no GPIO controller
-            if (gpio == null)
-            {
-                logger.WriteLn("There is no GPIO controller on this device.");
-                return;
-            }
-
-            var switchX = gpio.OpenPin(5);
-            var switchY = gpio.OpenPin(6);
-            switchX.SetDriveMode(GpioPinDriveMode.Input);
-            switchY.SetDriveMode(GpioPinDriveMode.Input);
+            logger.WriteLn("Calibrating...", LogType.Info);
 
             while(switchX.Read() == GpioPinValue.High)
             {
@@ -98,7 +107,7 @@ namespace DvdPlotter
             }
             motorX.Step(5, Direction.Forward, StepStyle.Interleave);
             motorY.Step(5, Direction.Forward, StepStyle.Interleave);
-            logger.WriteLn("Calibration done");
+            logger.WriteLn("Calibration done", LogType.Success);
             x = 0;
             y = 0;
             await Task.Delay(100);

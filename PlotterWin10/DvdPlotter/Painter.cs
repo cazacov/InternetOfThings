@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Drivers;
+using DvdPlotter.Extension;
 
 namespace DvdPlotter
 {
     public class Painter
     {
         private Plotter plotter;
+        private ILogger logger;
 
-        public Painter(Plotter plotter)
+        public Painter(Plotter plotter, ILogger logger)
         {
             this.plotter = plotter;
+            this.logger = logger;
         }
 
         public async Task Squares()
@@ -159,6 +163,49 @@ namespace DvdPlotter
                 await this.plotter.PenUp();
             }
             this.plotter.Stop();
+        }
+
+        public async Task Star()
+        {
+            const int corners = 9;
+            const int step = 4;
+            const int r = 145;
+
+            logger.WriteLn("Drawing a star with {0} corners.".Fmt(corners), LogType.Info);
+
+            var angle = 0.0;
+            await plotter.PenUp();
+            plotter.GoToXY(150 + r, 150);
+            await plotter.PenDown();
+            for (var i = 0; i < corners; i++)
+            {
+                angle += step*2*Math.PI/corners;
+                plotter.GoToDiagonal(150 + (int)(r * Math.Cos(angle)), 150 + (int)(r * Math.Sin(angle)));
+            }
+            await plotter.PenUp();
+        }
+
+        public async Task DemoXY()
+        {
+            await plotter.PenUp();
+            plotter.GoToXY(0, 150);
+            await Task.Delay(3000);
+            plotter.GoToXY(300, 150);
+            await Task.Delay(500);
+            plotter.GoToXY(150, 150);
+            await Task.Delay(500);
+            plotter.GoToXY(150, 0);
+            await Task.Delay(500);
+            plotter.GoToXY(150, 300);
+            await Task.Delay(500);
+            plotter.GoToXY(150, 150);
+        }
+
+        public async Task PenDemo()
+        {
+            await plotter.PenDown();
+            await Task.Delay(2000);
+            await plotter.PenUp();
         }
     }
 }
