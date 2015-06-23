@@ -69,7 +69,7 @@ namespace DvdPlotter
 
         public async Task Hilbert()
         {
-            const int order = 5;
+            const int order = 4;
 
             await this.plotter.PenUp();
             this.plotter.GoToXY(0, 0);

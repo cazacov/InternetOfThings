@@ -119,6 +119,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Abc.png" />
     <Content Include="Assets\DemoXY.png" />
     <Content Include="Assets\Hilbert.png" />
     <Content Include="Assets\Lines.png" />

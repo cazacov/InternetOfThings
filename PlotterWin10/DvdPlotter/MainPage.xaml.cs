@@ -31,6 +31,7 @@ namespace DvdPlotter
         private Painter painter;
         private bool isCalibrated = false;
         private bool isPainting = false;
+        private TextPainter textPainter;
 
         public MainPage()
         {
@@ -66,10 +67,24 @@ namespace DvdPlotter
             await plotter.Init();
             await plotter.PenUp();
             this.painter = new Painter(plotter, this);
+            this.textPainter = new TextPainter(plotter, new FontEnRu(), 35, 70, 15);
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            var ctrl = sender as UIElement;
+            while (ctrl != null && !(ctrl is Border))
+            {
+                ctrl =  VisualTreeHelper.GetParent(ctrl) as UIElement;
+            }
+
+            var ctr = ctrl as Border;
+            if (ctr != null)
+            {
+                ctr.Background = new SolidColorBrush(Colors.DarkOliveGreen);
+                await Task.Delay(100);
+            }
+
             if (!isCalibrated)
             {
                 await plotter.Calibrate();
@@ -104,11 +119,23 @@ namespace DvdPlotter
                 {
                     await painter.PenDemo();
                 }
+                else if (sender == btnText)
+                {
+                    await textPainter.DrawText("HELLO", 25,160);
+                    await textPainter.DrawText("WORLD!", 5, 20);
+                    plotter.GoToXY(5, 290);
+                }
+
             }
             finally
             {
                 plotter.Stop();
                 this.isPainting = false;
+
+                if (ctr != null)
+                {
+                    ctr.Background = null;
+                }
             }
             return;
         }
