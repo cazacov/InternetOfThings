@@ -31,3 +31,24 @@ Plotter running Windows 10 IoT Core
 <img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/XY5.jpg?raw=true" width="720" height="480"/>
 
 
+## Pen ##
+
+### Servo motor ###
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/Servo.jpg?raw=true" width="720" height="480"/>
+
+### Changeable Pens ###
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/Pens.jpg?raw=true" width="720" height="480"/>
+
+### Assembled pen unit ###
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/Pen.jpg?raw=true" width="720" height="480"/>
+
+
+## GUI ##
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/GUI.jpg?raw=true" width="720" height="480"/>
+
+
+## Fully assembled plotter ##
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/Assembled.jpg?raw=true" width="720" height="480"/>
+
+
+## Samples ##
