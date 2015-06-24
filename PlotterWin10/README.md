@@ -40,7 +40,7 @@ Plotter running Windows 10 IoT Core
 <img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/Pens.jpg?raw=true" width="720" height="480"/>
 
 ### Assembled pen unit ###
-<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/Pen.jpg?raw=true" width="720" height="480"/>
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/Pen.jpg?raw=true" width="480" height="720"/>
 
 
 ## GUI ##
@@ -52,3 +52,4 @@ Plotter running Windows 10 IoT Core
 
 
 ## Samples ##
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/Samples.jpg?raw=true" width="800" height="667"/>
