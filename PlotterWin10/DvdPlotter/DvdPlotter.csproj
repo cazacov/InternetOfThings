@@ -95,6 +95,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extension\StringExtensions.cs" />
+    <Compile Include="Fonts\FontEn.cs" />
+    <Compile Include="Fonts\FontRu.cs" />
+    <Compile Include="Fonts\FontEnRu.cs" />
+    <Compile Include="Fonts\IFont.cs" />
+    <Compile Include="Fonts\LineInstruction.cs" />
+    <Compile Include="Fonts\PlotChar.cs" />
+    <Compile Include="Fonts\TextPainter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -111,6 +119,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Abc.png" />
+    <Content Include="Assets\DemoXY.png" />
+    <Content Include="Assets\Hilbert.png" />
+    <Content Include="Assets\Lines.png" />
+    <Content Include="Assets\PenDemo.png" />
+    <Content Include="Assets\Squares.png" />
+    <Content Include="Assets\Star.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />

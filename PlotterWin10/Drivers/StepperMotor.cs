@@ -5,7 +5,8 @@ namespace Drivers
 {
     public class StepperMotor
     {
-        private const int MICROSTEPS = 8;
+        public const int MICROSTEPS_PER_INTERLEAVE_STEP = 4;
+        private const int MICROSTEPS = MICROSTEPS_PER_INTERLEAVE_STEP * 2;
         private readonly int ain1;
         private readonly int ain2;
         private readonly int bin1;
@@ -129,8 +130,8 @@ namespace Drivers
             }
 
             //go to next 'step' and wrap around
-            currentstep += MICROSTEPS * 4;
-            currentstep %= MICROSTEPS * 4;
+            currentstep += MICROSTEPS * MICROSTEPS_PER_INTERLEAVE_STEP;
+            currentstep %= MICROSTEPS * MICROSTEPS_PER_INTERLEAVE_STEP;
 
             this.driver.SetPwm(pwmA, 4096, 0);
             this.driver.SetPwm(pwmB, 4096, 0);
@@ -147,7 +148,7 @@ namespace Drivers
                 new bool[]{ true,   false,  false,  true }
             };
 
-            var coils = step2coils[currentstep / (MICROSTEPS / 2)];
+            var coils = step2coils[currentstep / MICROSTEPS_PER_INTERLEAVE_STEP];
 
             // print "coils state = " + str(coils)
             driver.SetPin(ain2, coils[0]);
@@ -176,5 +177,28 @@ namespace Drivers
                 syncDelay.Sleep(5);
             }
         }
+
+        public void MicrostepCoils(double position)
+        {
+            var angle = position*2 * Math.PI/(MICROSTEPS * MICROSTEPS_PER_INTERLEAVE_STEP);
+            var powerAC = (int) (Math.Cos(angle) * 4095);
+            var powerBD = (int) (Math.Sin(angle) * 4095);
+
+            this.driver.SetPwm(pwmA, 0, Math.Abs(powerAC));
+            this.driver.SetPwm(pwmB, 0, Math.Abs(powerBD));
+
+            driver.SetPin(ain2, powerAC > 0);
+            driver.SetPin(ain1, powerAC < 0);
+            driver.SetPin(bin1, powerBD > 0);
+            driver.SetPin(bin2, powerBD < 0);
+        }
+
+        public int CurrentStep
+        {
+            get { return this.currentstep; }
+            set { this.currentstep = value % (MICROSTEPS * 4); }
+        }
+
+        
     }
 }

@@ -7,7 +7,136 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     
-    <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="txt" FontSize="32" Foreground="#FF000000" />
+    <Grid Background="#FF232222" Margin="0,0,-116,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <ItemsControl Grid.Column="0" Margin="0,10,0,-10">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <Border Width="240" Height="240" Padding="10" CornerRadius="10" BorderThickness="3" BorderBrush="#FFB2D321" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Source="Assets/Squares.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                    <Button x:Name="btnSquares" Grid.Row="1" BorderBrush="{x:Null}" HorizontalAlignment="Center" Width="160" Background="#FF858583" Click="Button_Click">
+                        Squares
+                    </Button>
+                </Grid>
+            </Border>
+            <Border Width="240" Height="240" Padding="10" CornerRadius="10" BorderThickness="3" BorderBrush="#FFB2D321" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Source="Assets/Hilbert.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                    <Button x:Name="btnHilbert" Grid.Row="1" BorderBrush="{x:Null}" HorizontalAlignment="Center" Width="160" Background="#FF858583" Click="Button_Click">
+                        Hilbert curve
+                    </Button>
+                </Grid>
+            </Border>
+            <Border Width="240" Height="240" Padding="10" CornerRadius="10" BorderThickness="3" BorderBrush="#FFB2D321" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Source="Assets/Lines.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                    <Button x:Name="btnLines" Grid.Row="1" BorderBrush="{x:Null}" HorizontalAlignment="Center" Width="160" Background="#FF858583" Click="Button_Click">
+                        Lines
+                    </Button>
+                </Grid>
+            </Border>
+            <Border Width="240" Height="240" Padding="10" CornerRadius="10" BorderThickness="3" BorderBrush="#FFB2D321" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Source="Assets/Star.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                    <Button x:Name="btnStar" Grid.Row="1" BorderBrush="{x:Null}" HorizontalAlignment="Center" Width="160" Background="#FF858583" Click="Button_Click">
+                        Star
+                    </Button>
+                </Grid>
+            </Border>
+            <Border Width="240" Height="240" Padding="10" CornerRadius="10" BorderThickness="3" BorderBrush="#FFB2D321" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Source="Assets/DemoXY.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                    <Button x:Name="btnDemoXY" Grid.Row="1" BorderBrush="{x:Null}" HorizontalAlignment="Center" Width="160" Background="#FF858583" Click="Button_Click">
+                        Demo XY
+                    </Button>
+                </Grid>
+            </Border>
+            <Border Width="240" Height="240" Padding="10" CornerRadius="10" BorderThickness="3" BorderBrush="#FFB2D321" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Source="Assets/PenDemo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                    <Button x:Name="btnPenDemo" Grid.Row="1" BorderBrush="{x:Null}" HorizontalAlignment="Center" Width="160" Background="#FF858583" Click="Button_Click">
+                        Pen Demo
+                    </Button>
+                </Grid>
+            </Border>
+            <Border Width="240" Height="240" Padding="10" CornerRadius="10" BorderThickness="3" BorderBrush="#FFB2D321" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Source="Assets/Abc.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                    <Button x:Name="btnText" Grid.Row="1" BorderBrush="{x:Null}" HorizontalAlignment="Center" Width="160" Background="#FF858583" Click="Button_Click">
+                        Hello World!
+                    </Button>
+                </Grid>
+            </Border>
+        </ItemsControl>
+        <Grid Grid.Column="1" Background="Black">
+            <TextBlock x:Name="txt" FontSize="24" Foreground="#FFFFFEFE" Text=""/>
+        </Grid>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarToggleButton x:Name="btnStop" Label="Stop" Icon="Stop" />
+            <CommandBar.SecondaryCommands>
+                <AppBarToggleButton x:Name="btnCalibrate" Label="Calibrate" Icon="RepeatAll" Click="btnCalibrate_Click" />
+                <AppBarToggleButton x:Name="btnPenUp" Label="Pen up" Icon="Up" />
+                <AppBarToggleButton x:Name="btnPenDown" Label="Pen down" Icon="Edit" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>
