@@ -35,6 +35,43 @@ namespace DvdPlotter.Fonts
                 new LineInstruction(true, 0, -50),
                 new LineInstruction(true, -100, 0),
             }),
+            new PlotChar('П', new List<LineInstruction>()
+            {
+                new LineInstruction(true, 0, 100),
+                new LineInstruction(true, 100, 0),
+                new LineInstruction(true, 0, -100),
+            }),
+            new PlotChar('И', new List<LineInstruction>()
+            {
+                new LineInstruction(false, 0, 100),
+                new LineInstruction(true, 0, -100),
+                new LineInstruction(true, 100, 100),
+                new LineInstruction(true, 0, -100),
+            }),
+            new PlotChar('В', new List<LineInstruction>()
+            {
+                new LineInstruction(true, 0, 100),
+                new LineInstruction(true, 100, -25 ),
+                new LineInstruction(true, -100, -25),
+                new LineInstruction(true, 100, -25 ),
+                new LineInstruction(true, -100, -25),
+            }),
+            new PlotChar('Е', new List<LineInstruction>()
+            {
+                new LineInstruction(true, 0, 100),
+                new LineInstruction(true, 100, 0),
+                new LineInstruction(false, 0, -50),
+                new LineInstruction(true, -100, 0),
+                new LineInstruction(false, 0, -50),
+                new LineInstruction(true, 100, 0),
+            }),
+            new PlotChar('Т', new List<LineInstruction>()
+            {
+                new LineInstruction(false, 0, 100),
+                new LineInstruction(true, 100, 0),
+                new LineInstruction(false, -50, 0),
+                new LineInstruction(true, 0, -100),
+            }),
         };
     }
 }

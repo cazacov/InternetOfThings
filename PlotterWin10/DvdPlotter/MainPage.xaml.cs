@@ -125,6 +125,12 @@ namespace DvdPlotter
                     await textPainter.DrawText("WORLD!", 5, 20);
                     plotter.GoToXY(5, 290);
                 }
+                else if (sender == btnTextRu)
+                {
+                    await textPainter.DrawText("ПРИВЕТ", 5, 160);
+                    await textPainter.DrawText("ХАБР!", 25, 20);
+                    plotter.GoToXY(5, 290);
+                }
 
             }
             finally
