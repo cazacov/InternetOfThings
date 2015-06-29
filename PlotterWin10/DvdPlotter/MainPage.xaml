@@ -138,6 +138,21 @@
                     </Button>
                 </Grid>
             </Border>
+            <Border Width="240" Height="240" Padding="10" CornerRadius="10" BorderThickness="3" BorderBrush="#FFB2D321" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Source="Assets/IoT.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                    <Button x:Name="btnPcb" Grid.Row="1" BorderBrush="{x:Null}" HorizontalAlignment="Center" Width="160" Background="#FF858583" Click="Button_Click">
+                        PCB
+                    </Button>
+                </Grid>
+            </Border>
         </ItemsControl>
         <Grid Grid.Column="1" Background="Black">
             <TextBlock x:Name="txt" FontSize="24" Foreground="#FFFFFEFE" Text=""/>

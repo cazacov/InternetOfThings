@@ -122,6 +122,7 @@
     <Content Include="Assets\Abc.png" />
     <Content Include="Assets\DemoXY.png" />
     <Content Include="Assets\Hilbert.png" />
+    <Content Include="Assets\IoT.png" />
     <Content Include="Assets\Lines.png" />
     <Content Include="Assets\PenDemo.png" />
     <Content Include="Assets\Squares.png" />

@@ -131,7 +131,10 @@ namespace DvdPlotter
                     await textPainter.DrawText("ХАБР!", 25, 20);
                     plotter.GoToXY(5, 290);
                 }
-
+                else if (sender == btnPcb)
+                {
+                    await painter.PCB();
+                }
             }
             finally
             {
