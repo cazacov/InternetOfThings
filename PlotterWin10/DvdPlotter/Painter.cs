@@ -211,7 +211,7 @@ namespace DvdPlotter
             var w = 11;
 
             // outer frame
-            for (var i = 0; i < w; i++)
+            for (var i = 0; i < w/2; i++)
             {
                 plotter.GoToXY(i, i);
                 plotter.GoToXY(300-i, i);
