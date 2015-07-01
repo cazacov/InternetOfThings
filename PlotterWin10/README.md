@@ -53,3 +53,17 @@ Plotter running Windows 10 IoT Core
 
 ## Samples ##
 <img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/Samples.jpg?raw=true" width="800" height="667"/>
+
+## Printed Circuit Board ##
+
+### Drawing with a permanent waterproof marker  ###
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/pcb1.jpg?raw=true" width="800" height="667"/>
+
+### Etching ###
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/pcb2.jpg?raw=true" width="800" height="667"/>
+
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/pcb3.jpg?raw=true" width="800" height="667"/>
+
+### Ready PCB ###
+
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/pcb4.jpg?raw=true" width="800" height="667"/>
