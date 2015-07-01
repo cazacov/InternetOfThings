@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Markup;
 using Drivers;
 using DvdPlotter.Extension;
 
@@ -69,7 +70,7 @@ namespace DvdPlotter
 
         public async Task Hilbert()
         {
-            const int order = 4;
+            const int order = 5;
 
             await this.plotter.PenUp();
             this.plotter.GoToXY(0, 0);
@@ -199,6 +200,86 @@ namespace DvdPlotter
             plotter.GoToXY(150, 300);
             await Task.Delay(500);
             plotter.GoToXY(150, 150);
+        }
+
+        public async Task PCB()
+        {
+            await plotter.PenUp();
+            plotter.GoToXY(0, 0);
+            await plotter.PenDown();
+
+            var w = 11;
+
+            // outer frame
+            for (var i = 0; i < w/2; i++)
+            {
+                plotter.GoToXY(i, i);
+                plotter.GoToXY(300-i, i);
+                plotter.GoToXY(300 - i, 300 - i);
+                plotter.GoToXY(i, 300 - i);
+                plotter.GoToXY(i, i);
+            }
+            await plotter.PenUp();
+
+            // I
+            var ix = 25;
+            var iy = 70;
+            plotter.GoToXY(ix, iy);
+            await plotter.PenDown();
+            
+            for (var i = 0; i < w; i++)
+            {
+                plotter.GoToXY(ix + i, iy + i);
+                plotter.GoToXY(ix + i, iy + 20 - i);
+                plotter.GoToXY(ix + 25 + i, iy + 20 - i);
+                plotter.GoToXY(ix + 25 + i, iy + 140 + i);
+                plotter.GoToXY(ix + i, iy + 140 + i);
+                plotter.GoToXY(ix + i, iy + 160 - i);
+                plotter.GoToXY(ix + 70 - i, iy + 160 - i);
+                plotter.GoToXY(ix + 70 - i, iy + 140 + i);
+                plotter.GoToXY(ix + 45 - i, iy + 140 + i);
+                plotter.GoToXY(ix + 45 - i, iy + 20 - i);
+                plotter.GoToXY(ix + 70 - i, iy + 20 - i);
+                plotter.GoToXY(ix + 70 - i, iy + i);
+                plotter.GoToXY(ix + i, iy + i);
+            }
+            await plotter.PenUp();
+
+            // O
+            var ox = 110;
+            var oy = 70;
+            plotter.GoToXY(ox, oy);
+            await plotter.PenDown();
+
+            for (var i = 0; i < w * 1.5; i++)
+            {
+                plotter.GoToXY(ox + i, oy + i);
+                plotter.GoToXY(ox + i, oy + 120 - i);
+                plotter.GoToXY(ox + 80 - i, oy + 120 - i);
+                plotter.GoToXY(ox + 80 - i, oy + i);
+                plotter.GoToXY(ox + i, oy + i);
+            }
+            await plotter.PenUp();
+            
+            // T
+            var tx = 220;
+            var ty = 70;
+            plotter.GoToXY(tx, ty);
+            await plotter.PenDown();
+
+            for (var i = 0; i < w; i++)
+            {
+                plotter.GoToXY(tx + i, ty + i);
+                plotter.GoToXY(tx + i, ty + 140 + i);
+                plotter.GoToXY(tx - 40 + i, ty + 140 + i);
+                plotter.GoToXY(tx - 40 + i, ty + 160 - i);
+                plotter.GoToXY(tx + 60 - i, ty + 160 - i);
+                plotter.GoToXY(tx + 60 - i, ty + 140 + i);
+                plotter.GoToXY(tx + 20 - i, ty + 140 + i);
+                plotter.GoToXY(tx + 20 - i, ty + i);
+                plotter.GoToXY(tx + i, ty + i);
+            }
+            await plotter.PenUp();
         }
 
         public async Task PenDemo()

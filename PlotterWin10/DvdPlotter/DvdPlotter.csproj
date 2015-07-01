@@ -122,10 +122,12 @@
     <Content Include="Assets\Abc.png" />
     <Content Include="Assets\DemoXY.png" />
     <Content Include="Assets\Hilbert.png" />
+    <Content Include="Assets\IoT.png" />
     <Content Include="Assets\Lines.png" />
     <Content Include="Assets\PenDemo.png" />
     <Content Include="Assets\Squares.png" />
     <Content Include="Assets\Star.png" />
+    <Content Include="Assets\TextRu.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
