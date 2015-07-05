@@ -32,6 +32,7 @@ namespace DvdPlotter
         private bool isCalibrated = false;
         private bool isPainting = false;
         private TextPainter textPainter;
+        private TextPainter textPainterSmall;
 
         public MainPage()
         {
@@ -68,6 +69,7 @@ namespace DvdPlotter
             await plotter.PenUp();
             this.painter = new Painter(plotter, this);
             this.textPainter = new TextPainter(plotter, new FontEnRu(), 35, 70, 15);
+            this.textPainterSmall = new TextPainter(plotter, new FontEnRu(), 22, 45, 5);
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -129,6 +131,12 @@ namespace DvdPlotter
                 {
                     await textPainter.DrawText("ПРИВЕТ", 5, 160);
                     await textPainter.DrawText("ХАБР!", 25, 20);
+                    plotter.GoToXY(5, 290);
+                }
+                else if (sender == btnHashtag)
+                {
+                    await textPainterSmall.DrawText("#WINBUILDER", 5, 130);
+                    await painter.DrawCursor(150, 110);
                     plotter.GoToXY(5, 290);
                 }
                 else if (sender == btnPcb)

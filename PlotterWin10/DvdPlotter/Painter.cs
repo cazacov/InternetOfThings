@@ -288,5 +288,20 @@ namespace DvdPlotter
             await Task.Delay(2000);
             await plotter.PenUp();
         }
+
+        public async Task DrawCursor(int x, int y)
+        {
+            await this.plotter.PenUp();
+            plotter.GoToXY(x, y);
+            await this.plotter.PenDown();
+            plotter.GoToXY(x, y - 70);
+            plotter.GoToDiagonal(x+17, y - 63);
+            plotter.GoToDiagonal(x + 30, y - 90);
+            plotter.GoToDiagonal(x + 45, y - 80);
+            plotter.GoToDiagonal(x + 34, y - 55);
+            plotter.GoToDiagonal(x + 50, y - 47);
+            plotter.GoToDiagonal(x, y);
+            await this.plotter.PenUp();
+        }
     }
 }

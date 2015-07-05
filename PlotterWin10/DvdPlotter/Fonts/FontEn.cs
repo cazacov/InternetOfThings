@@ -58,12 +58,37 @@ namespace DvdPlotter.Fonts
                 new LineInstruction(true, 0, -50),
                 new LineInstruction(true, -100, -25),
             }),
+            new PlotChar('I', new List<LineInstruction>()
+            {
+                new LineInstruction(false, 30, 0),
+                new LineInstruction(true, 40, 0),
+                new LineInstruction(false, 0, 100),
+                new LineInstruction(true, -40, 0),
+                new LineInstruction(false, 20, 0),
+                new LineInstruction(true, 0, -100),
+            }),
+            new PlotChar('N', new List<LineInstruction>()
+            {
+                new LineInstruction(true, 0, 100),
+                new LineInstruction(true, 100, -100),
+                new LineInstruction(true, 0, 100),
+            }),
+            new PlotChar('B', new List<LineInstruction>()
+            {
+                new LineInstruction(true, 0, 100),
+                new LineInstruction(true, 100, -25 ),
+                new LineInstruction(true, -100, -25),
+                new LineInstruction(true, 100, -25 ),
+                new LineInstruction(true, -100, -25),
+            }),
             new PlotChar('U', new List<LineInstruction>()
             {
                 new LineInstruction(false, 0, 100),
-                new LineInstruction(true, 0, -100),
-                new LineInstruction(true, 100, 0),
-                new LineInstruction(true, 0, 100),
+                new LineInstruction(true, 0, -75 ),
+                new LineInstruction(true, 25, -25),
+                new LineInstruction(true, 50, 0 ),
+                new LineInstruction(true, 25, 25),
+                new LineInstruction(true, 0, 75),
             }),
             new PlotChar('!', new List<LineInstruction>()
             {
@@ -79,6 +104,17 @@ namespace DvdPlotter.Fonts
                 new LineInstruction(true, 10, 0),
                 new LineInstruction(true, 0, -10),
                 new LineInstruction(true, -10, 0),
+            }),
+            new PlotChar('#', new List<LineInstruction>()
+            {
+                new LineInstruction(false, 0, 30),
+                new LineInstruction(true, 100, 0),
+                new LineInstruction(false, 0, 40),
+                new LineInstruction(true, -100, 0),
+                new LineInstruction(false, 25, 30),
+                new LineInstruction(true, 0, -100),
+                new LineInstruction(false, 50, 0),
+                new LineInstruction(true, 0, 100),
             }),
         };
     }
