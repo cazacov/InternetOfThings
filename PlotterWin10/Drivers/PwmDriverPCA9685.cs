@@ -5,7 +5,11 @@ using Windows.Devices.I2c;
 
 namespace Drivers
 {
-    public class PwmDriverPCA9685
+    /// <summary>
+    /// I2C driver for boards with PCA9685 PWM chip like
+    /// Adafruit Stepper Motor HAT or 16-Channel PWM/Servo Driver
+    /// </summary>
+    public class PwmDriverPCA9685 : IPwmDriver
     {
         private readonly ILogger logger;
         private I2cDevice pca9685;
@@ -13,10 +17,8 @@ namespace Drivers
         // Registers/etc.
         private const byte MODE1 = 0x00;
         private const byte MODE2 = 0x01;
-        private const byte SUBADR1 = 0x02;
-        private const byte SUBADR2 = 0x03;
-        private const byte SUBADR3 = 0x04;
         private const byte PRESCALE = 0xFE;
+
         // Bits
         private const byte RESTART = 0x80;
         private const byte SLEEP = 0x10;
