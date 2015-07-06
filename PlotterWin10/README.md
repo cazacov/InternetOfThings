@@ -15,7 +15,7 @@ Plotter running Windows 10 IoT Core
 
 ## Wiring ##
 
-<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/WiringScheme.png?raw=true" width="960" height="541"/>
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/WiringScheme.png?raw=true" width="858" height="483"/>
 
 
 ## X-Y coordinate table with two stepper motors ##
