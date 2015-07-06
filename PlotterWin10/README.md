@@ -13,6 +13,11 @@ Plotter running Windows 10 IoT Core
 - Stickers
 - [Windows 10 IoT Core](http://windowsondevices.com)
 
+## Wiring ##
+
+<img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/WiringScheme.png?raw=true" width="960" height="541"/>
+
+
 ## X-Y coordinate table with two stepper motors ##
 
 ### Old PC ###
