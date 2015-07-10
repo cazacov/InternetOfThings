@@ -3,6 +3,10 @@ Plotter running Windows 10 IoT Core
 
 <img src="https://github.com/cazacov/InternetOfThings/blob/master/PlotterWin10/img/plotter.jpg?raw=true" alt="Plotter running Windows 10 IoT" width="720" height="480"/>
 
+## Demo Video ##
+
+[![Demo video](http://img.youtube.com/vi/57ttER3Jnqw/0.jpg)](https://www.youtube.com/watch?v=57ttER3Jnqw "Demo Video")
+
 ## Parts list ##
 - Raspberry Pi 2
 - Two old DVD drives
