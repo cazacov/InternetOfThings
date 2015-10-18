@@ -1,0 +1,13 @@
+{
+  "name": "WindowsIoTSensors",
+  "version": "0.0.0",
+  "description": "Windows IoT Core - Sensors",
+  "main": "server.js",
+  "author": {
+    "name": "Victor",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "~4.13.0"
+  }
+}

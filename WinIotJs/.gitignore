@@ -1,0 +1,9 @@
+#ignore files that are downloaded using Bower
+js_client/lib/
+
+#ignore NPM packages
+node_modules/
+
+#Visual Studio files
+bin/
+obj/
