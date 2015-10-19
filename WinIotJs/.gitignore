@@ -7,3 +7,4 @@ node_modules/
 #Visual Studio files
 bin/
 obj/
+.ntvs_analysis.dat

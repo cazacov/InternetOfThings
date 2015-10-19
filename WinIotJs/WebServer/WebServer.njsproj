@@ -57,7 +57,9 @@
     <Compile Include="js_client\lib\toastr\toastr.js" />
     <Compile Include="js_client\lib\toastr\toastr.min.js" />
     <Compile Include="js_client\webapp.js" />
+    <Compile Include="js_server\Hmc5883.js" />
     <Compile Include="js_server\Imu3000.js" />
+    <Compile Include="js_server\leds.js" />
     <Compile Include="server.js" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />

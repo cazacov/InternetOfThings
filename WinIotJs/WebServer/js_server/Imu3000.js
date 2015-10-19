@@ -12,7 +12,7 @@ var gyroI2CDevice;
 
 var isInitialized;
 
-function init() {
+function init(callback) {
     if (isInitialized) {
         return;
     }
@@ -32,6 +32,9 @@ function init() {
             accI2CDevice = device;
             if (gyroI2CDevice) {
                 initImu3000();
+                if (callback) {
+                    callback();
+                }
             }
         });
         
@@ -39,6 +42,9 @@ function init() {
             gyroI2CDevice = device;
             if (accI2CDevice) {
                 initImu3000();
+                if (callback) {
+                    callback();
+                }
             }
         });
     });
