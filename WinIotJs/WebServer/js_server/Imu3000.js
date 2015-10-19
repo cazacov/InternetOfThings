@@ -12,7 +12,7 @@ var gyroI2CDevice;
 
 var isInitialized;
 
-function init(callback) {
+function init() {
     if (isInitialized) {
         return;
     }
@@ -32,9 +32,6 @@ function init(callback) {
             accI2CDevice = device;
             if (gyroI2CDevice) {
                 initImu3000();
-                if (callback) {
-                    callback();
-                }
             }
         });
         
@@ -42,9 +39,6 @@ function init(callback) {
             gyroI2CDevice = device;
             if (accI2CDevice) {
                 initImu3000();
-                if (callback) {
-                    callback();
-                }
             }
         });
     });
@@ -100,14 +94,14 @@ function readAccGyro() {
     // map axes
     return {
         acc: {
-            x: -accel_x,
-            y: accel_z,
-            z: -accel_y
+            x: accel_x,
+            y: accel_y,
+            z: accel_z
         },
         gyro: {
-            dx: gyro_y,
-            dy: gyro_z,
-            dz: -gyro_x
+            dx: gyro_x,
+            dy: gyro_y,
+            dz: gyro_z
         }
     }
 }

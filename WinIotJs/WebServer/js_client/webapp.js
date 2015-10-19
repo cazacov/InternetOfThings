@@ -8,7 +8,12 @@ require([], function () {
     function getSensors() {
         $.get("/sensors", function (data, status) {
             console.log(data);
-            $('#debugElem').text(data);
+            $('#ax').text(data.acc.x);
+            $('#ay').text(data.acc.y);
+            $('#az').text(data.acc.z);
+            $('#mx').text(data.mag.x);
+            $('#my').text(data.mag.y);
+            $('#mz').text(data.mag.z);
         })
         .fail(function (err) {
             $('#debugElem').text("AJAX ", "Error: ");

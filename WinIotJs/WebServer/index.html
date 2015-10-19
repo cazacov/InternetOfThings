@@ -8,8 +8,39 @@
 <body>
     <div id="container3d" style="background: #202020; height: 100%; width: 100%">
         <div style="position: absolute;">
-            <span id="debugElem"></span>
-            <!--<table style="color: white" id="debugBox"></table> -->
+            <table id="debugBox">
+                <tr>
+                    <td colspan="2">Accelerometer</td>
+                </tr>
+                <tr>
+                    <td>X</td>
+                    <td id="ax"></td>
+                </tr>
+                <tr>
+                    <td>Y</td>
+                    <td id="ay"></td>
+                </tr>
+                <tr>
+                    <td>Z</td>
+                    <td id="az"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Magnetometer</td>
+                </tr>
+                <tr>
+                    <td>X</td>
+                    <td id="mx"></td>
+                </tr>
+                <tr>
+                    <td>Y</td>
+                    <td id="my"></td>
+                </tr>
+                <tr>
+                    <td>Z</td>
+                    <td id="mz"></td>
+                </tr>
+            </table>
+            
         </div>
     </div>
     <script src="js_client/lib/jquery/dist/jquery.min.js"></script>
