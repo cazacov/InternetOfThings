@@ -50,7 +50,8 @@ define(function () {
         group = new THREE.Object3D();//create an empty container
         group.add( arduino);//add a mesh with geometry to it
         scene.add( group );
-
+        
+        /*
         // Mark axes
         var geometryX = new THREE.BoxGeometry(10, 10, 10 );
         var materialX = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
@@ -69,6 +70,7 @@ define(function () {
         var cubeZ = new THREE.Mesh( geometryZ, materialZ );
         cubeZ.position.z = 200;
         group.add( cubeZ );
+         */ 
 
         // Lights
         var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
@@ -183,7 +185,9 @@ define(function () {
         var d = rotationMatrix.determinant();
 
         var compensateGeo = new THREE.Matrix4();
-        compensateGeo.makeRotationY(  (180 + 10) * Math.PI / 180.0);
+        
+        // Magnetic declination in Dachau, Germany is +2.49'
+        compensateGeo.makeRotationY(  (180 - 3) * Math.PI / 180.0);
 
 
         compensateGeo.multiply(rotationMatrix);

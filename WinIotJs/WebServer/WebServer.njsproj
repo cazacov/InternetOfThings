@@ -62,6 +62,8 @@
     <Compile Include="js_client\loaders\ColladaLoader.js" />
     <Compile Include="js_client\sensors.js" />
     <Compile Include="js_client\webapp.js" />
+    <Compile Include="js_server\lowpassfilter.js" />
+    <Compile Include="js_server\meanFilter.js" />
     <Compile Include="js_server\Hmc5883.js" />
     <Compile Include="js_server\Imu3000.js" />
     <Compile Include="js_server\leds.js" />
