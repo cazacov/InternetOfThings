@@ -1,3 +1,12 @@
-﻿body {
-    background-color: #404040;
+﻿html,body{ 
+    margin:0; 
+    padding:0; 
+    height:100%; 
+    width:100%; }
+
+#container3d{
+    background: #202020;
+    height:100%;
+    width:100%;
+    overflow:hidden; /* or overflow:auto; if you want scrollbars */
 }

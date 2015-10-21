@@ -159,7 +159,7 @@ define(function () {
 
     function rotateModel(yProjection, xProjection)
     {
-        yProjection.normalize();
+        xProjection.normalize();
         yProjection.normalize();
 
         // calculate third (X) vector
@@ -187,7 +187,7 @@ define(function () {
         var compensateGeo = new THREE.Matrix4();
         
         // Magnetic declination in Dachau, Germany is +2.49'
-        compensateGeo.makeRotationY(  (180 - 3) * Math.PI / 180.0);
+        compensateGeo.makeRotationY(  (0 - 3) * Math.PI / 180.0);
 
 
         compensateGeo.multiply(rotationMatrix);

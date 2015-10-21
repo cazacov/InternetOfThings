@@ -418,8 +418,8 @@ var DeviceOrientationController = function ( object, domElement ) {
 
 				if ( this.freeze ) return;
 
-				//this.object.quaternion.slerp( deviceQuat, 0.07 ); // smoothing
-				this.object.quaternion.copy( deviceQuat );
+				this.object.quaternion.slerp( deviceQuat, 0.20 ); // smoothing
+				//this.object.quaternion.copy( deviceQuat );
 
 			}
 
