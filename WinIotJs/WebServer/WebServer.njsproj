@@ -46,6 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="js_client\config.js" />
+    <Compile Include="js_client\controller3d.js" />
+    <Compile Include="js_client\debugwriter.js" />
+    <Compile Include="js_client\deviceorientationcontroller.js" />
     <Compile Include="js_client\lib\jquery\dist\jquery.js" />
     <Compile Include="js_client\lib\jquery\dist\jquery.min.js" />
     <Compile Include="js_client\lib\requirejs\require.js" />
@@ -56,6 +59,8 @@
     <Compile Include="js_client\lib\three.js\three.min.js" />
     <Compile Include="js_client\lib\toastr\toastr.js" />
     <Compile Include="js_client\lib\toastr\toastr.min.js" />
+    <Compile Include="js_client\loaders\ColladaLoader.js" />
+    <Compile Include="js_client\sensors.js" />
     <Compile Include="js_client\webapp.js" />
     <Compile Include="js_server\Hmc5883.js" />
     <Compile Include="js_server\Imu3000.js" />
@@ -95,6 +100,7 @@
     <Content Include="js_client\lib\toastr\toastr.min.css" />
     <Content Include="js_client\lib\toastr\toastr.scss" />
     <Content Include="package.json" />
+    <Content Include="raspberry.dae" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -118,6 +124,7 @@
     <Folder Include="js_client\lib\sprintf\dist\" />
     <Folder Include="js_client\lib\three.js\" />
     <Folder Include="js_client\lib\toastr\" />
+    <Folder Include="js_client\loaders\" />
     <Folder Include="js_server\" />
     <Folder Include="css\" />
   </ItemGroup>

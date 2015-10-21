@@ -1,11 +1,11 @@
 {
-    "name": "Windows IoT Core - Sensors",
-    "version": "0.0.1",
-    "dependencies": {
-        "jquery": null,
-        "requirejs": null,
-        "sprintf": null,
-        "toastr": null,
-        "three.js": null
-    }
+  "name": "Windows IoT Core - Sensors",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": null,
+    "requirejs": null,
+    "sprintf": null,
+    "toastr": null,
+    "three.js": "~0.72.0"
+  }
 }

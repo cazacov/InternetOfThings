@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.75.0 commit date:2015-07-07, commit time:14:56, hash:c27589e</authoring_tool>
     </contributor>
-    <created>2015-10-20T23:06:18</created>
-    <modified>2015-10-20T23:06:18</modified>
+    <created>2015-10-21T21:37:58</created>
+    <modified>2015-10-21T21:37:58</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -1031,15 +1031,15 @@
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
       <node id="Camera" name="Camera" type="NODE">
-        <matrix sid="transform">0.6858805 -0.3173701 0.6548619 74.16232 0.7276338 0.3124686 -0.6106656 -71.88499 -0.01081678 0.8953432 0.4452454 52.46751 0 0 0 1</matrix>
+        <matrix sid="transform">0.6858805 -0.3173702 0.6548619 75.72757 0.01081684 -0.8953432 -0.4452455 -46.58423 0.7276338 0.3124687 -0.6106656 -70.82213 0 0 0 1</matrix>
         <instance_camera url="#Camera-camera"/>
       </node>
       <node id="Lamp" name="Lamp" type="NODE">
-        <matrix sid="transform">-0.2908646 -0.7711008 0.5663932 -88.73771 0.9551712 -0.1998834 0.2183912 57.6627 -0.05518906 0.6045247 0.7946723 119.5934 0 0 0 1</matrix>
+        <matrix sid="transform">-0.2908646 -0.7711009 0.5663932 -87.17245 0.05518913 -0.6045247 -0.7946723 -113.7101 0.9551712 -0.1998833 0.2183913 58.72557 0 0 0 1</matrix>
         <instance_light url="#Lamp-light"/>
       </node>
       <node id="PCB_Main" name="PCB_Main" type="NODE">
-        <matrix sid="transform">28 0 0 0 0 42.5 0 0 0 0 0.5 -0.5 0 0 0 1</matrix>
+        <matrix sid="transform">28 0 0 1.565257 0 3.20866e-6 -0.5 6.383289 0 42.5 3.7749e-8 1.062862 0 0 0 1</matrix>
         <instance_geometry url="#Cube_001-mesh" name="PCB_Main">
           <bind_material>
             <technique_common>
@@ -1049,7 +1049,7 @@
         </instance_geometry>
       </node>
       <node id="Connector_40pin" name="Connector_40pin" type="NODE">
-        <matrix sid="transform">2.5 0 0 -23.74745 0 25 0 -10.50965 0 0 5 5 0 0 0 1</matrix>
+        <matrix sid="transform">2.5 0 0 -22.1822 0 1.88745e-6 -5 0.8832903 0 25 3.77489e-7 -9.446785 0 0 0 1</matrix>
         <instance_geometry url="#Cube_002-mesh" name="Connector_40pin">
           <bind_material>
             <technique_common>
@@ -1059,7 +1059,7 @@
         </instance_geometry>
       </node>
       <node id="PCB_Hat" name="PCB_Hat" type="NODE">
-        <matrix sid="transform">28 0 0 0 0 32.5 0 -8.89764 0 0 0.5 10.5 0 0 0 1</matrix>
+        <matrix sid="transform">28 0 0 1.565257 0 2.45368e-6 -0.5 -4.616711 0 32.5 3.7749e-8 -7.834778 0 0 0 1</matrix>
         <instance_geometry url="#Cube_003-mesh" name="PCB_Hat">
           <bind_material>
             <technique_common>
@@ -1069,7 +1069,7 @@
         </instance_geometry>
       </node>
       <node id="LAN" name="LAN" type="NODE">
-        <matrix sid="transform">8 0 0 18.17976 0 10.5 0 34.32366 0 0 7 7 0 0 0 1</matrix>
+        <matrix sid="transform">8 0 0 19.74501 0 7.92728e-7 -7 -1.116709 0 10.5 5.28485e-7 35.38652 0 0 0 1</matrix>
         <instance_geometry url="#Cube_004-mesh" name="LAN">
           <bind_material>
             <technique_common>
@@ -1079,7 +1079,7 @@
         </instance_geometry>
       </node>
       <node id="USB" name="USB" type="NODE">
-        <matrix sid="transform">6.5 0 0 -19.71241 0 8.5 0 36.02121 0 0 7.5 7.5 0 0 0 1</matrix>
+        <matrix sid="transform">6.5 0 0 -18.14715 0 6.41732e-7 -7.5 -1.616709 0 8.5 5.66234e-7 37.08408 0 0 0 1</matrix>
         <instance_geometry url="#Cube_005-mesh" name="USB">
           <bind_material>
             <technique_common>
@@ -1089,7 +1089,7 @@
         </instance_geometry>
       </node>
       <node id="USB2" name="USB2" type="NODE">
-        <matrix sid="transform">6.5 0 0 -1.286167 0 8.5 0 36.02121 0 0 7.5 7.5 0 0 0 1</matrix>
+        <matrix sid="transform">6.5 0 0 0.2790895 0 6.41732e-7 -7.5 -1.616709 0 8.5 5.66234e-7 37.08408 0 0 0 1</matrix>
         <instance_geometry url="#Cube_006-mesh" name="USB2">
           <bind_material>
             <technique_common>
@@ -1099,7 +1099,7 @@
         </instance_geometry>
       </node>
       <node id="WiFi" name="WiFi" type="NODE">
-        <matrix sid="transform">7.5 0 0 -19.58312 0 9 0 54.67086 0 0 4 11.74424 0 0 0 1</matrix>
+        <matrix sid="transform">7.5 0 0 -18.01787 0 6.79481e-7 -4 -5.860943 0 9 3.01992e-7 55.73373 0 0 0 1</matrix>
         <instance_geometry url="#Cube_007-mesh" name="WiFi">
           <bind_material>
             <technique_common>
@@ -1109,7 +1109,7 @@
         </instance_geometry>
       </node>
       <node id="Connector_18pin" name="Connector_18pin" type="NODE">
-        <matrix sid="transform">23 0 0 4.610409 0 1 0 -32.60217 0 0 4 15.5 0 0 0 1</matrix>
+        <matrix sid="transform">23 0 0 6.175665 0 7.54979e-8 -4 -9.616714 0 1 3.01992e-7 -31.53931 0 0 0 1</matrix>
         <instance_geometry url="#Cube_008-mesh" name="Connector_18pin">
           <bind_material>
             <technique_common>
@@ -1119,7 +1119,7 @@
         </instance_geometry>
       </node>
       <node id="Accelerometer" name="Accelerometer" type="NODE">
-        <matrix sid="transform">14 0 0 -7.898264 0 10.5 0 -23.79368 0 0 0.5 20 0 0 0 1</matrix>
+        <matrix sid="transform">14 0 0 -6.333007 0 7.92728e-7 -0.5 -14.11671 0 10.5 3.7749e-8 -22.73082 0 0 0 1</matrix>
         <instance_geometry url="#Cube_009-mesh" name="Accelerometer">
           <bind_material>
             <technique_common>
@@ -1129,7 +1129,7 @@
         </instance_geometry>
       </node>
       <node id="Magnetometer" name="Magnetometer" type="NODE">
-        <matrix sid="transform">6.5 0 0 14.59386 0 7.5 0 -26.14661 0 0 0.5 20 0 0 0 1</matrix>
+        <matrix sid="transform">6.5 0 0 16.15911 0 5.66234e-7 -0.5 -14.11671 0 7.5 3.7749e-8 -25.08375 0 0 0 1</matrix>
         <instance_geometry url="#Cube_010-mesh" name="Magnetometer">
           <bind_material>
             <technique_common>
@@ -1139,7 +1139,7 @@
         </instance_geometry>
       </node>
       <node id="Connector_8pin" name="Connector_8pin" type="NODE">
-        <matrix sid="transform">10 0 0 -7.574243 0 1 0 -15.15804 0 0 4 15.5 0 0 0 1</matrix>
+        <matrix sid="transform">10 0 0 -6.008986 0 7.54979e-8 -4 -9.616712 0 1 3.01992e-7 -14.09518 0 0 0 1</matrix>
         <instance_geometry url="#Cube_011-mesh" name="Connector_8pin">
           <bind_material>
             <technique_common>
@@ -1149,7 +1149,7 @@
         </instance_geometry>
       </node>
       <node id="Chip" name="Chip" type="NODE">
-        <matrix sid="transform">6 0 0 -6.545517 0 6 0 1.667656 0 0 0.5 -1 0 0 0 1</matrix>
+        <matrix sid="transform">6 0 0 -4.98026 0 4.52987e-7 -0.5 6.883289 0 6 3.7749e-8 2.730518 0 0 0 1</matrix>
         <instance_geometry url="#Cube_012-mesh" name="Chip">
           <bind_material>
             <technique_common>
@@ -1159,7 +1159,7 @@
         </instance_geometry>
       </node>
       <node id="Chip_001" name="Chip_001" type="NODE">
-        <matrix sid="transform">2.5 0 0 -5.204443 0 2.5 0 -23.81275 0 0 0.5 20.5 0 0 0 1</matrix>
+        <matrix sid="transform">2.5 0 0 -3.639186 0 1.88745e-7 -0.5 -14.61671 0 2.5 3.7749e-8 -22.74989 0 0 0 1</matrix>
         <instance_geometry url="#Cube_013-mesh" name="Chip_001">
           <bind_material>
             <technique_common>
@@ -1169,7 +1169,7 @@
         </instance_geometry>
       </node>
       <node id="Chip_002" name="Chip_002" type="NODE">
-        <matrix sid="transform">3 0 0 -12.80386 0 2 0 -23.58924 0 0 0.5 20.5 0 0 0 1</matrix>
+        <matrix sid="transform">3 0 0 -11.23861 0 1.50996e-7 -0.5 -14.61671 0 2 3.7749e-8 -22.52637 0 0 0 1</matrix>
         <instance_geometry url="#Cube_014-mesh" name="Chip_002">
           <bind_material>
             <technique_common>
@@ -1179,7 +1179,7 @@
         </instance_geometry>
       </node>
       <node id="Chip_003" name="Chip_003" type="NODE">
-        <matrix sid="transform">2 0 0 16.25274 0 2 0 -25.37734 0 0 0.5 20.5 0 0 0 1</matrix>
+        <matrix sid="transform">2 0 0 17.818 0 1.50996e-7 -0.5 -14.61671 0 2 3.7749e-8 -24.31447 0 0 0 1</matrix>
         <instance_geometry url="#Cube_015-mesh" name="Chip_003">
           <bind_material>
             <technique_common>
@@ -1189,7 +1189,7 @@
         </instance_geometry>
       </node>
       <node id="Pins" name="Pins" type="NODE">
-        <matrix sid="transform">0.5 0 0 -24.78801 0 0.5 0 7.896484 0 0 7 5 0 0 0 1</matrix>
+        <matrix sid="transform">0.5 0 0 -23.22275 0 3.7749e-8 -7 0.8832893 0 0.5 5.28485e-7 8.959347 0 0 0 1</matrix>
         <instance_geometry url="#Cylinder_035-mesh" name="Pins">
           <bind_material>
             <technique_common>
@@ -1199,11 +1199,11 @@
         </instance_geometry>
       </node>
       <node id="Hemi" name="Hemi" type="NODE">
-        <matrix sid="transform">1 0 0 0.1509174 0 1 0 2.625971 0 0 1 110.5821 0 0 0 1</matrix>
+        <matrix sid="transform">1 0 0 1.716174 0 7.54979e-8 -1 -104.6988 0 1 7.54979e-8 3.688843 0 0 0 1</matrix>
         <instance_light url="#Hemi-light"/>
       </node>
       <node id="Hemi_001" name="Hemi_001" type="NODE">
-        <matrix sid="transform">0.4148978 -0.7557781 -0.5066155 -69.15581 -0.8223106 -0.07314655 -0.564318 -71.45496 0.389442 0.6507296 -0.6518327 -56.033 0 0 0 1</matrix>
+        <matrix sid="transform">0.4148978 -0.7557783 -0.5066153 -67.59055 -0.3894421 -0.6507295 0.6518328 61.91629 -0.8223106 -0.07314665 -0.5643181 -70.3921 0 0 0 1</matrix>
         <instance_light url="#Hemi_001-light"/>
       </node>
     </visual_scene>

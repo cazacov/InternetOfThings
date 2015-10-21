@@ -6,74 +6,18 @@
     <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
-    <div id="container3d" style="background: #202020; height: 100%; width: 100%">
+    <div id="container3d" style="background: #202020; height: 800px; width: 100%">
         <div style="position: absolute;">
-            <table id="debugBox">
-                <tr>
-                    <td colspan="4">Accelerometer</td>
-                </tr>
-                <tr>
-                    <td>X</td>
-                    <td id="ax" colspan="3"></td>
-                </tr>
-                <tr>
-                    <td>Y</td>
-                    <td id="ay" colspan="3"></td>
-                </tr>
-                <tr>
-                    <td>Z</td>
-                    <td id="az" colspan="3"></td>
-                </tr>
-                <tr>
-                    <td colspan="4">Magnetometer</td>
-                </tr>
-                <tr>
-                    <td>X</td>
-                    <td id="mx"></td>
-                    <td id="minx"></td>
-                    <td id="maxx"></td>
-                </tr>
-                <tr>
-                    <td>Y</td>
-                    <td id="my"></td>
-                    <td id="miny"></td>
-                    <td id="maxy"></td>
-                </tr>
-                <tr>
-                    <td>Z</td>
-                    <td id="mz"></td>
-                    <td id="minz"></td>
-                    <td id="maxz"></td>
-                </tr>
-                <tr>
-                    <td colspan="4">Correction</td>
-                </tr>
-                <tr>
-                    <td>X</td>
-                    <td id="cx"></td>
-                    <td id="sx"></td>
-                    <td id="nx"></td>
-                </tr>
-                <tr>
-                    <td>Y</td>
-                    <td id="cy"></td>
-                    <td id="sy"></td>
-                    <td id="ny"></td>
-                </tr>
-                <tr>
-                    <td>Z</td>
-                    <td id="cz"></td>
-                    <td id="sz"></td>
-                    <td id="nz"></td>
-                </tr>
-            </table>
-            
+            <table style="color: white" id="debugBox"></table>
         </div>
     </div>
     <script src="js_client/lib/jquery/dist/jquery.min.js"></script>
     <script src="js_client/lib/toastr/toastr.js"></script>
     <script src="js_client/lib/requirejs/require.js"></script>
     <script src="js_client/config.js"></script>
+    <script src="js_client/lib/three.js/three.js"></script>
+    <script src="js_client/loaders/colladaloader.js"></script>
+    <script src="js_client/deviceorientationcontroller.js"></script>
     <script src="js_client/webapp.js"></script>
 </body>
 </html>
