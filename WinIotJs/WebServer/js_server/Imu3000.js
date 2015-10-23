@@ -12,7 +12,7 @@ var gyroI2CDevice;
 
 var isInitialized;
 
-function init() {
+function init(callback) {
     if (isInitialized) {
         return;
     }
@@ -31,20 +31,20 @@ function init() {
         Windows.Devices.I2c.I2cDevice.fromIdAsync(dis[0].id, accSettings).done(function (device) {
             accI2CDevice = device;
             if (gyroI2CDevice) {
-                initImu3000();
+                initImu3000(callback);
             }
         });
         
         Windows.Devices.I2c.I2cDevice.fromIdAsync(dis[0].id, gyroSettings).done(function (device) {
             gyroI2CDevice = device;
             if (accI2CDevice) {
-                initImu3000();
+                initImu3000(callback);
             }
         });
     });
 }
 
-function initImu3000() {
+function initImu3000(callback) {
     // Set Gyro settings
     // Sample Rate 1kHz, Filter Bandwidth 42Hz, Gyro Range 500 d/s 
     writeTo(gyroI2CDevice, 0x16, 0x0B);
@@ -59,6 +59,10 @@ function initImu3000() {
     writeTo(accI2CDevice, ADXL345_POWER_CTL, 8);
     //cancel pass through to accel, gyro will now read accel for us   
     writeTo(gyroI2CDevice, 0x3D, 0x28);
+
+    if (callback) {
+        callback();
+    }
 }
 
 function writeTo(i2cDevice, regAddress, regValue) {
