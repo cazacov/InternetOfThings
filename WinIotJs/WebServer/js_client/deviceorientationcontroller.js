@@ -405,22 +405,18 @@ var DeviceOrientationController = function ( object, domElement ) {
 			if ( alpha !== 0 && beta !== 0 && gamma !== 0) {
 
 				if ( this.useQuaternions ) {
-
 					deviceQuat = createQuaternion( alpha, beta, gamma, orient );
-
 				} else {
-
 					deviceMatrix = createRotationMatrix( alpha, beta, gamma, orient );
-
 					deviceQuat.setFromRotationMatrix( deviceMatrix );
-
 				}
 
-				if ( this.freeze ) return;
-
-				this.object.quaternion.slerp( deviceQuat, 0.20 ); // smoothing
+                if (this.freeze) {
+                    return;
+                }
 				//this.object.quaternion.copy( deviceQuat );
 
+				this.object.quaternion.slerp( deviceQuat, 0.25 ); // smoothing
 			}
 
 		};
