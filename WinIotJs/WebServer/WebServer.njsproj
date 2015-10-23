@@ -71,6 +71,7 @@
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
     <Content Include="css\site.css" />
+    <Content Include="img\icon.png" />
     <Content Include="index.html" />
     <Content Include="js_client\lib\jquery\.bower.json" />
     <Content Include="js_client\lib\jquery\bower.json" />
@@ -117,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
+    <Folder Include="img\" />
     <Folder Include="js_client\" />
     <Folder Include="js_client\lib\" />
     <Folder Include="js_client\lib\jquery\" />
@@ -152,7 +154,7 @@
       <FlavorProperties GUID="{00251f00-ba30-4ce4-96a2-b8a1085f37aa}" Configuration="Debug" Platform="ARM">
         <NodejsUwpProjectFlavorCfg>
           <NodeExeArguments>--debug</NodeExeArguments>
-          <DebuggerMachineName>victor</DebuggerMachineName>
+          <DebuggerMachineName>192.168.178.75</DebuggerMachineName>
         </NodejsUwpProjectFlavorCfg>
       </FlavorProperties>
       <FlavorProperties GUID="{00251f00-ba30-4ce4-96a2-b8a1085f37aa}" Configuration="Release" Platform="ARM">
