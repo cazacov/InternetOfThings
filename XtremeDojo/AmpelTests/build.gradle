@@ -1,0 +1,15 @@
+group 'ampel'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile 'com.google.http-client:google-http-client:1.20.0'
+    testCompile 'com.google.http-client:google-http-client-jackson2:1.20.0'
+}
