@@ -23,8 +23,6 @@ pinGreen.setDriveMode(Windows.Devices.Gpio.GpioPinDriveMode.output);
 var high = Windows.Devices.Gpio.GpioPinValue.high;
 var low = Windows.Devices.Gpio.GpioPinValue.low;
 
-var pins = { red: pinRed, yellow: pinYellow, green: pinGreen };
-
 var state = {
     red: false,
     yellow: false,
@@ -36,19 +34,9 @@ pinYellow.write(low);
 pinGreen.write(low);
 
 
-router.get('/:color/:state', function (req, res) {
-    
-    // Turn on the LED on GPIO pin 5     
-    
-    res.send(state);
-});
-
 
 /* GET home page. */
 router.get('/', function (req, res) {
-    
-    // Turn on the LED on GPIO pin 5     
-
     res.send(state);
 });
 
@@ -66,44 +54,21 @@ router.get('/reset', function (req, res) {
     res.send(state);
 });
 
+var pins = { red: pinRed, yellow: pinYellow, green: pinGreen };
+var states = { off: { signal: low, state: false }, on: { signal: high, state: true } };
 
+router.get('/:color/:state', function (req, res) {
+    var color = req.params.color
+    var pin = pins[color]
+    var requiredState = states[req.params.state]
+    if (!pin || !requiredState) {
+        res.send(404)
+        return
+    }
 
-//router.get('/red/on', function (req, res) {
-//    pinRed.write(high);
-//    state.red = true;
-//    res.send(state);
-//});
-
-//router.get('/red/off', function (req, res) {
-//    pinRed.write(low);
-//    state.red = false;
-//    res.send(state);
-//});
-
-//router.get('/green/on', function (req, res) {
-//    pinGreen.write(high);
-//    state.green = true;
-//    res.send(state);
-//});
-
-//router.get('/green/off', function (req, res) {
-//    pinGreen.write(low);
-//    state.green = false;
-//    res.send(state);
-//});
-
-//router.get('/yellow/on', function (req, res) {
-//    pinYellow.write(high);
-//    state.yellow = true;
-//    res.send(state);
-//});
-
-//router.get('/yellow/off', function (req, res) {
-//    pinYellow.write(low);
-//    state.yellow = false;
-//    res.send(state);
-//});
-
-
+    pin.write(requiredState.signal)
+    state[color] = requiredState.state;
+    res.send(state);
+});
 
 module.exports = router;
