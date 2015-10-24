@@ -41,7 +41,7 @@ router.get('/', function (req, res) {
 });
 
 /* GET home page. */
-router.get('/reset', function (req, res) {
+router.post('/reset', function (req, res) {
     pinRed.write(low);
     pinYellow.write(low);
     pinGreen.write(low);
@@ -57,7 +57,7 @@ router.get('/reset', function (req, res) {
 var pins = { red: pinRed, yellow: pinYellow, green: pinGreen };
 var states = { off: { signal: low, state: false }, on: { signal: high, state: true } };
 
-router.get('/:color/:state', function (req, res) {
+router.post('/:color/:state', function (req, res) {
     var color = req.params.color
     var pin = pins[color]
     var requiredState = states[req.params.state]
