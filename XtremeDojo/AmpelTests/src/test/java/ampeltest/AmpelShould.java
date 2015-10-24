@@ -34,14 +34,26 @@ public class AmpelShould {
 
     }
 
-    private HttpRequest getHttpRequest(String path) throws IOException {
+    private HttpRequest createGetRequest(String path) throws IOException {
         GenericUrl url = new GenericUrl("http://192.168.1.105:3000" + path);
         return requestFactory.buildGetRequest(url);
     }
 
+    private HttpRequest createPostRequest(String path) throws IOException {
+        GenericUrl url = new GenericUrl("http://192.168.1.105:3000" + path);
+        return requestFactory.buildPostRequest(url, null);
+    }
 
-    private AmpelState execute(String command) throws Exception {
-        HttpRequest request = getHttpRequest(command);
+
+    private AmpelState executeGet(String command) throws Exception {
+        HttpRequest request = createGetRequest(command);
+        AmpelState result =  request.execute().parseAs(AmpelState.class);
+        Thread.sleep(400);
+        return result;
+    }
+
+    private AmpelState executePost(String command) throws Exception {
+        HttpRequest request = createPostRequest(command);
         AmpelState result =  request.execute().parseAs(AmpelState.class);
         Thread.sleep(400);
         return result;
@@ -51,18 +63,18 @@ public class AmpelShould {
     @Before
     public void setUp() throws Exception {
         Thread.sleep(100);
-        execute("/ampel/reset");
+        executePost("/ampel/reset");
     }
 
     @Test
     public void redIsOffAfterReset() throws Exception {
-        AmpelState state = execute("/ampel");
+        AmpelState state = executeGet("/ampel");
         Assert.assertFalse(state.red);
     }
 
     @Test
     public void redIsOn() throws Exception {
-        AmpelState state =  execute("/ampel/red/on");
+        AmpelState state =  executePost("/ampel/red/on");
         Assert.assertTrue(state.red);
         Assert.assertFalse(state.green);
         Assert.assertFalse(state.yellow);
@@ -70,50 +82,50 @@ public class AmpelShould {
 
     @Test
     public void redIsOff() throws Exception {
-        execute("/ampel/red/on");
-        AmpelState state =  execute("/ampel/red/off");
+        executePost("/ampel/red/on");
+        AmpelState state =  executePost("/ampel/red/off");
         Assert.assertFalse(state.red);
     }
 
     @Test
     public void yellowIsOn() throws Exception {
-        AmpelState state =  execute("/ampel/yellow/on");
+        AmpelState state =  executePost("/ampel/yellow/on");
         Assert.assertTrue(state.yellow);
     }
 
     @Test
     public void yellowIsOff() throws Exception {
-        execute("/ampel/yellow/on");
-        AmpelState state =  execute("/ampel/yellow/off");
+        executePost("/ampel/yellow/on");
+        AmpelState state =  executePost("/ampel/yellow/off");
         Assert.assertFalse(state.yellow);
     }
 
     @Test
     public void greenIsOn() throws Exception {
-        AmpelState state =  execute("/ampel/green/on");
+        AmpelState state =  executePost("/ampel/green/on");
         Assert.assertTrue(state.green);
     }
 
     @Test
     public void greenIsOff() throws Exception {
-        execute("/ampel/green/on");
-        AmpelState state =  execute("/ampel/green/off");
+        executePost("/ampel/green/on");
+        AmpelState state =  executePost("/ampel/green/off");
         Assert.assertFalse(state.green);
     }
 
     @Test(expected = HttpResponseException.class)
     public void badColorOff() throws Exception {
-        AmpelState state =  execute("/ampel/badcolor/off");
+        AmpelState state =  executePost("/ampel/badcolor/off");
     }
 
     @Test(expected = HttpResponseException.class)
     public void badState() throws Exception {
-        AmpelState state =  execute("/ampel/red/badState");
+        AmpelState state =  executePost("/ampel/red/badState");
     }
 
 
     @After
     public void tearDown() throws Exception {
-        execute("/ampel/reset");
+        executePost("/ampel/reset");
     }
 }
